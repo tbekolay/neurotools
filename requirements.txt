@@ -3,8 +3,6 @@ scipy
 matplotlib
 IPython
 tables>=1.4
-psyco
-pygsl
 PIL
 rpy
 rpy2

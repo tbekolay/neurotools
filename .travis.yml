@@ -5,6 +5,11 @@ install:
     - sudo apt-get install python-numpy
     - sudo apt-get install python-scipy
     - sudo apt-get install python-matplotlib
+    - sudo apt-get install python-tables
+    - sudo apt-get install python-imaging
+    - sudo apt-get install python-rpy
+    - sudo apt-get install python-rpy2
+    - sudo apt-get install python-django
     - sudo apt-get install python-pip
     - sudo apt-get install python-nose
     - sudo apt-get install python-coverage
