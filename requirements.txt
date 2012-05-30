@@ -1,12 +1,11 @@
-neurotools
+numpy>=1.2
+scipy
 matplotlib
+IPython
 tables>=1.4
 psyco
 pygsl
 PIL
-numpy>=1.2
-scipy
 rpy
 rpy2
 django
-IPython
