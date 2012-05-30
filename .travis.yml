@@ -4,7 +4,11 @@ python:
   - 2.6
   - 2.7
 
+before_install:
+ - sudo apt-get update
+ - sudo apt-get install gcc g77 python-dev atlas3-base-dev
 install:
   - pip install -r requirements.txt --use-mirrors
+  - pip install . --use-mirrors
 script:
   - nosetests --with-coverage --cover-package=neurotools
