@@ -6,6 +6,8 @@ python:
 before_install:
  - sudo apt-get update
  - sudo apt-get install gcc gfortran python-dev libatlas-base-dev liblapack-dev liblapack3gf
+ - mkdir $VIRTUAL_ENV/local
+ - ln -s $VIRTUAL_ENV/lib $VIRTUAL_ENV/local/lib
 install:
   - pip install -r requirements.txt --use-mirrors
   - pip install . --use-mirrors
