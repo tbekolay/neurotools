@@ -1,15 +1,14 @@
-language: python
-python:
-  - 2.5
-  - 2.6
-  - 2.7
-before_install:
- - sudo apt-get update
- - sudo apt-get install gcc gfortran python-dev libatlas-base-dev liblapack-dev liblapack3gf
- - mkdir $VIRTUAL_ENV/local
- - ln -s $VIRTUAL_ENV/lib $VIRTUAL_ENV/local/lib
+# Idea from Matthew Brett of nipy. Pretend to be erlang and use apt, for now.
+language: erlang
 install:
-  - pip install -r requirements.txt --use-mirrors
-  - pip install . --use-mirrors
+    - sudo apt-get install python-dev
+    - sudo apt-get install python-numpy
+    - sudo apt-get install python-scipy
+    - sudo apt-get install python-matplotlib
+    - sudo apt-get install python-pip
+    - sudo apt-get install python-nose
+    - sudo apt-get install python-coverage
+    - pip install -r requirements.txt --use-mirrors
+    - pip install . --use-mirrors
 script:
-  - nosetests --with-coverage --cover-package=neurotools
+    - nosetests --with-coverage --cover-package=neurotools
