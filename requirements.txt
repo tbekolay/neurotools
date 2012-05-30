@@ -1,0 +1,15 @@
+pylab
+matplotlib
+tables
+psyco
+pygsl
+PIL
+numpy
+scipy
+srblib
+rpy
+rpy2
+django
+IPython
+interval
+TableIO
