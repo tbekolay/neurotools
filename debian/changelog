@@ -1,0 +1,18 @@
+neurotools (0.1.0+svn446) karmic; urgency=low
+
+  * debian/rules using pysupport stuff
+  * svn revision 446
+
+ -- Eric Mueller <mueller@ignatz.kip.uni-heidelberg.de>  Wed, 12 May 2010 18:53:58 +0200
+
+neurotools (0.1.0+svn) intrepid; urgency=low
+
+  * svn
+
+ -- neurotools <neurotools@neuralensemble.org>  Mon, 17 Nov 2008 11:45:54 +0100
+
+neurotools (0.1.0) intrepid; urgency=low
+
+  * Initial release.
+
+ -- neurotools <neurotools@neuralensemble.org>  Fri, 14 Nov 2008 11:40:49 +0100

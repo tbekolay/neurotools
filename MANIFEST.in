@@ -1,0 +1,8 @@
+include doc/*.txt
+include doc/README
+recursive-include examples *.py *.param
+include AUTHORS
+include INSTALL
+include LICENSE
+include THANKS
+

@@ -1,0 +1,8 @@
+# user info
+username: joe
+email:  joe@example.com
+
+# recipes
+recipes:
+  all: /somewhere1/file1.xml
+  specific: /somewhere2/file2.xml

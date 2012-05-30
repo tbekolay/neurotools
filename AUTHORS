@@ -1,0 +1,39 @@
+NeuroTools is a community-driven open-source project with many hard
+working contributors.  They are ...
+
+Daniel Bruederle (bruederle@neuralensemble.org)
+Andrew Davison (apdavison@neuralensemble.org)
+Jens Kremkow (kremkow@neuralensemble.org)
+Eilif Muller (emuller@neuralensemble.org)
+Eric Mueller (eric.mueller@neuralensemble.org)
+Laurent Perrinet (perrinet@neuralensemble.org)
+Michael Schmuker (mschmuker@neuralensemble.org)
+Pierre Yger (yger@neuralensemble.org)
+
+Module maintainers:
+
+signals:	Pierre Yger 
+		Laurent Perrinet
+		Jens Kremkow
+parameters:	Andrew Davison
+io:		Pierre Yger
+plotting:	Daniel Bruederle
+analysis:	Eilif Muller
+utilities:	Daniel Bruederle
+stgen:		Eilif Muller
+		Michael Schmuker 
+examples:	Laurent Perrinet 
+spike2:		Jens Kremkow 
+datastore:	Andrew Davison
+
+Documentation manager: Pierre Yger
+Web-admin:    	       Eilif Muller
+Promotion:	       Laurent Perrinet
+
+Testing manager: Andrew Davison
+
+Packaging manager: Eric Mueller
+
+
+NeuroTools software development is supported in part by the EU under
+the grant IST-2005-15879 (FACETS, http://www.facets-project.org).

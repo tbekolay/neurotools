@@ -1,0 +1,42 @@
+NeuroTools Installation
+=======================
+
+The simplest method is to use:
+
+    $ pip install NeuroTools
+
+
+Compiling from source
+---------------------
+
+First download the package files::
+
+	$ svn co https://neuralensemble.org/svn/NeuroTools/trunk NeuroTools
+	$ cd NeuroTools
+
+Install as root (if you want a global install)::
+
+	# python setup.py install
+
+or for those without root access, install to a writable location, something like::
+
+	$ python setup.py install --prefix=$HOME/opt/mystuff
+
+Then you need to add the location::
+
+    $HOME/opt/mystuff/lib/python2.7/site-packages/ 
+
+to your PYTHONPATH or within python in your sys.path directive.
+
+Note, here lib is replaced by `lib64` on 64 bit systems, and `python2.7` is
+(obviously) replaced by your python version.
+
+Developers of NeuroTools may be interested in using the last-updated version from svn.
+A solution is to symbolically link the src folder to a folder included in the path::
+
+	cd my_local_site-packages_folder
+	ln -s where_I_check-out_neuralensemble/NeuroTools/trunk/src NeuroTools
+
+and voila!
+
+

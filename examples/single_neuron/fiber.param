@@ -1,0 +1,13 @@
+{
+  "simulation": {
+    "kernelseed": 4321097,
+    "dt": 0.1,
+    "syn_delay": 1.0,
+    "simtime": 4000.0,
+    "connectseed": 12345789,
+  },
+  "snr": 2.0,
+  "noise_std": 2.0,
+  "weight": 1.0,
+  "N": 100,
+}
