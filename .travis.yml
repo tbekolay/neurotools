@@ -13,7 +13,7 @@ install:
     - sudo apt-get install python-pip
     - sudo apt-get install python-nose
     - sudo apt-get install python-coverage
-    - pip install -r requirements.txt --use-mirrors
-    - pip install . --use-mirrors
+    - pip install --user -r requirements.txt --use-mirrors
+    - pip install --user . --use-mirrors
 script:
     - nosetests --with-coverage --cover-package=neurotools
