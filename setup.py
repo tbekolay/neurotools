@@ -5,7 +5,7 @@ from distutils.core import setup
 setup(
     name = "NeuroTools",
     version = "0.2.0dev",
-    package_dir={'neurotools': 'src'},
+    package_dir={'neurotools': 'neurotools'},
     packages = ['neurotools',
                 'neurotools.utilities',
                 'neurotools.tisean',
@@ -17,7 +17,7 @@ setup(
                 'neurotools.datastore.django_orm',
                 'neurotools.optimize',
                ],
-    package_data={'NeuroTools': ['doc/*.txt', 'README']},
+    package_data={'neurotools': ['docs/*.rst', 'README']},
     author = "The NeuralEnsemble Community",
     author_email = "neurotools@neuralensemble.org",
     description = "A collection of tools to support all tasks associated with a neural simulation project which are not handled by the simulation engine",
