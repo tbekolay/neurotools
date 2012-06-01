@@ -1,10 +1,10 @@
 """
-Unit tests for the NeuroTools.stgen module
+Unit tests for the neurotools.stgen module
 """
 
 import unittest
-from NeuroTools import stgen
-from NeuroTools import signals
+from neurotools import stgen
+from neurotools import signals
 import numpy
 
 class StatisticalError(Exception):
@@ -189,7 +189,7 @@ Re-run the test to see if the error persists."""
     def testInhGammaBasic(self):
 
         from numpy import array
-        import NeuroTools.signals
+        import neurotools.signals
 
         stg = stgen.StGen()
 
@@ -199,7 +199,7 @@ Re-run the test to see if the error persists."""
 
         st = stg.inh_gamma_generator(array([3.0,3.0]),array([1.0/100.0/3.0,1.0/200.0/3.0]),array([500.0,1500.0]),2500.0,array=False)
 
-        assert(type(st)==NeuroTools.signals.spikes.SpikeTrain)
+        assert(type(st)==neurotools.signals.spikes.SpikeTrain)
 
 
 
@@ -208,7 +208,7 @@ Re-run the test to see if the error persists."""
         # this is a statistical test with non-zero chance of failure
 
         from numpy import array
-        import NeuroTools.signals
+        import neurotools.signals
 
         stg = stgen.StGen()
 

@@ -1,4 +1,4 @@
 """
-Unit tests for the NeuroTools.visual_logging module as well as the logging
-helper tools in NeuroTools.__init__
+Unit tests for the neurotools.visual_logging module as well as the logging
+helper tools in neurotools.__init__
 """

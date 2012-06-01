@@ -1,11 +1,11 @@
 """
-Unit tests for the NeuroTools.parameters module
+Unit tests for the neurotools.parameters module
 
 Also see the doctests in doc/parameters.txt
 """
 
-from NeuroTools.parameters import *
-from NeuroTools.random import GammaDist, UniformDist, NormalDist, ParameterDist
+from neurotools.parameters import *
+from neurotools.random import GammaDist, UniformDist, NormalDist, ParameterDist
 import os
 import sys
 import unittest
@@ -15,7 +15,7 @@ import pickle
 
 #class DependenciesTest(unittest.TestCase):
 #    """
-#    Uncomment this class and comment-out "from NeuroTools.parameters import *"
+#    Uncomment this class and comment-out "from neurotools.parameters import *"
 #    above to run this test."""
 #    
 #    def setUp(self):
@@ -28,8 +28,8 @@ import pickle
 #        sys.path = self.orig_path[:]
 #
 #    def test_with_empty_path(self):
-#        import NeuroTools.parameters
-#        self.assertFalse(NeuroTools.parameters.have_scipy)
+#        import neurotools.parameters
+#        self.assertFalse(neurotools.parameters.have_scipy)
 
 class ParameterRangeTest(unittest.TestCase):
     

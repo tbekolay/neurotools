@@ -4,7 +4,7 @@ Tests for the optimize module.
 $Id: test_optimize.py 365 2008-12-23 21:47:50Z mschmucker $
 """
 import unittest
-from NeuroTools.optimize import optimizers
+from neurotools.optimize import optimizers
 
 class TestGridSearcher(unittest.TestCase):
     """
@@ -14,7 +14,7 @@ class TestGridSearcher(unittest.TestCase):
         def func(param_dict):
             x,y = param_dict['x'], param_dict['y']
             return x*x + y*y
-        from NeuroTools.parameters import ParameterSpace, ParameterRange
+        from neurotools.parameters import ParameterSpace, ParameterRange
         grid = ParameterSpace({'x':ParameterRange([-2., -1., 0., 1., 2.]),
                                'y':ParameterRange([-2., -1., 0., 1., 2.])})
         gs = optimizers.GridSearcher(grid, func)    
@@ -23,7 +23,7 @@ class TestGridSearcher(unittest.TestCase):
         self.failUnlessEqual(retdict['min_params'], {'x':0., 'y':0.})
 
 
-#from NeuroTools.optimize.parameter_search import *
+#from neurotools.optimize.parameter_search import *
 #
 #class TestParameterSearch(unittest.TestCase):
 #    """

@@ -1,10 +1,10 @@
 """
-Unit tests for the NeuroTools.random module
+Unit tests for the neurotools.random module
 
 """
 
 import unittest
-from NeuroTools.random import *
+from neurotools.random import *
 
 class RandomDistributionTest(unittest.TestCase):
     

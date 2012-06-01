@@ -1,3 +1,3 @@
 """
-Unit tests for the NeuroTools.io module
+Unit tests for the neurotools.io module
 """

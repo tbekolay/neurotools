@@ -1,12 +1,12 @@
 """
-Unit tests for the NeuroTools.analysis module
+Unit tests for the neurotools.analysis module
 """
 import numpy
 import scipy.io
 import unittest
 from numpy import pi, sin
 
-from NeuroTools import analysis, signals
+from neurotools import analysis, signals
 
 # test simple_frequency_spectrum
 

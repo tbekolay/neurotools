@@ -1,9 +1,9 @@
 """
-Unit tests for the NeuroTools.plotting module
+Unit tests for the neurotools.plotting module
 """
 
 import unittest
-from NeuroTools import plotting
+from neurotools import plotting
 import pylab
 import os
 

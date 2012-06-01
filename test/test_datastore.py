@@ -1,13 +1,13 @@
 """
-Unit tests for the NeuroTools.datastore module
+Unit tests for the neurotools.datastore module
 
 """
 
 import unittest
 import os
 import shutil
-from NeuroTools.datastore import *
-from NeuroTools.parameters import ParameterSet
+from neurotools.datastore import *
+from neurotools.parameters import ParameterSet
 
 class DummyComponent(object):
     

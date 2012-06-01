@@ -1,14 +1,14 @@
 """
-Unit tests for the NeuroTools.signals module
+Unit tests for the neurotools.signals module
 """
 
-from NeuroTools import io
-import NeuroTools.signals.spikes as spikes
-import NeuroTools.signals.analogs as analogs
-from NeuroTools.signals.pairs import *
+from neurotools import io
+import neurotools.signals.spikes as spikes
+import neurotools.signals.analogs as analogs
+from neurotools.signals.pairs import *
 
 import numpy, unittest, os
-from NeuroTools.__init__ import check_numpy_version, check_dependency
+from neurotools.__init__ import check_numpy_version, check_dependency
 newnum = check_numpy_version()
 
 ENABLE_PLOTS = check_dependency('pylab')

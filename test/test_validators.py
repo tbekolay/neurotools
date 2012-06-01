@@ -1,11 +1,11 @@
 """
-Unit tests for the NeuroTools.parameters module
+Unit tests for the neurotools.parameters module
 
 Also see the doctests in doc/parameters.txt
 """
 
-import NeuroTools.parameters
-from NeuroTools.random import GammaDist, UniformDist, NormalDist, ParameterDist
+import neurotools.parameters
+from neurotools.random import GammaDist, UniformDist, NormalDist, ParameterDist
 import os
 import sys
 import unittest
@@ -13,15 +13,15 @@ import types
 from copy import deepcopy
 import pickle
 
-import NeuroTools.parameters.validators 
-from NeuroTools.parameters.validators import congruent_dicts 
-from NeuroTools.parameters import *
+import neurotools.parameters.validators 
+from neurotools.parameters.validators import congruent_dicts 
+from neurotools.parameters import *
 
 import yaml
 
 #class DependenciesTest(unittest.TestCase):
 #    """
-#    Uncomment this class and comment-out "from NeuroTools.parameters import *"
+#    Uncomment this class and comment-out "from neurotools.parameters import *"
 #    above to run this test."""
 #    
 #    def setUp(self):
@@ -34,8 +34,8 @@ import yaml
 #        sys.path = self.orig_path[:]
 #
 #    def test_with_empty_path(self):
-#        import NeuroTools.parameters
-#        self.assertFalse(NeuroTools.parameters.have_scipy)
+#        import neurotools.parameters
+#        self.assertFalse(neurotools.parameters.have_scipy)
 
 ps = ParameterSet({'a':1, 'b':2}, label="PS1")
 ps2 = ParameterSet({'ps':ps, 'c':19}, label="PS2")
@@ -44,16 +44,16 @@ ps3 = ParameterSet({'hello': 'world', 'ps2': ps2, 'null': None,
                     'mydict': {'c': 3, 'd':4}, 'yourlist': [1,2,{'e':5, 'f':6}],
                     }, label="PS3")
 
-schema3 = ParameterSchema({'mylist': NeuroTools.parameters.validators.Subclass(type=list), 
-                           'true': NeuroTools.parameters.validators.Subclass(type=bool), 
-                           'yourlist': NeuroTools.parameters.validators.Subclass(type=list), 
-                           'ps2': {'ps': {'a':NeuroTools.parameters.validators.Subclass(type=int),
-                                          'b':NeuroTools.parameters.validators.Subclass(type=int)},
-                                   'c': NeuroTools.parameters.validators.Subclass(type=int)}, 
-                           'null': NeuroTools.parameters.validators.Subclass(type=type(None)),
-                           'mydict': {'c': NeuroTools.parameters.validators.Subclass(type=int),
-                                      'd': NeuroTools.parameters.validators.Subclass(type=int)},
-                           'hello': NeuroTools.parameters.validators.Subclass(type=str)})
+schema3 = ParameterSchema({'mylist': neurotools.parameters.validators.Subclass(type=list), 
+                           'true': neurotools.parameters.validators.Subclass(type=bool), 
+                           'yourlist': neurotools.parameters.validators.Subclass(type=list), 
+                           'ps2': {'ps': {'a':neurotools.parameters.validators.Subclass(type=int),
+                                          'b':neurotools.parameters.validators.Subclass(type=int)},
+                                   'c': neurotools.parameters.validators.Subclass(type=int)}, 
+                           'null': neurotools.parameters.validators.Subclass(type=type(None)),
+                           'mydict': {'c': neurotools.parameters.validators.Subclass(type=int),
+                                      'd': neurotools.parameters.validators.Subclass(type=int)},
+                           'hello': neurotools.parameters.validators.Subclass(type=str)})
 
 
 class ParameterSchemeTest(unittest.TestCase):
@@ -79,15 +79,15 @@ class ParameterSchemeTest(unittest.TestCase):
 
         v = CongruencyValidator()
         # test Eval which checks for isinstance(x,list)
-        s1.mylist = NeuroTools.parameters.validators.Eval('isinstance(x,list)',var='x')
+        s1.mylist = neurotools.parameters.validators.Eval('isinstance(x,list)',var='x')
         assert v.validate(ps3,s1)==True
 
         # test default var 'leaf'
-        s1.hello = NeuroTools.parameters.validators.Eval('isinstance(leaf,str)')
+        s1.hello = neurotools.parameters.validators.Eval('isinstance(leaf,str)')
         assert v.validate(ps3,s1)==True
 
         # test failure and var as non-kwarg
-        s1.mylist = NeuroTools.parameters.validators.Eval('isinstance(x,str)','x')
+        s1.mylist = neurotools.parameters.validators.Eval('isinstance(x,str)','x')
 
         r = False
         try:
@@ -107,8 +107,8 @@ class ParameterSchemeTest(unittest.TestCase):
         """
 
         s_str = """
-        list: !!python/object:NeuroTools.parameters.validators.Eval { expr: 'isinstance(x,list) and all([isinstance(elem,int) for elem in x])', var: 'x'}
-        flist: !!python/object:NeuroTools.parameters.validators.Eval { expr: 'isinstance(x,list) and all([isinstance(elem,float) for elem in x])', var: 'x'}
+        list: !!python/object:neurotools.parameters.validators.Eval { expr: 'isinstance(x,list) and all([isinstance(elem,int) for elem in x])', var: 'x'}
+        flist: !!python/object:neurotools.parameters.validators.Eval { expr: 'isinstance(x,list) and all([isinstance(elem,float) for elem in x])', var: 'x'}
         """
         
         
@@ -117,7 +117,7 @@ class ParameterSchemeTest(unittest.TestCase):
 
         v = CongruencyValidator()
         # test Eval which checks for isinstance(x,list)
-        #s1.mylist = NeuroTools.parameters.validators.Eval('isinstance(x,list) and all([isinstance(elem,int) for elem in x])',var='x')
+        #s1.mylist = neurotools.parameters.validators.Eval('isinstance(x,list) and all([isinstance(elem,int) for elem in x])',var='x')
         assert v.validate(p1,s1)==True
 
 
@@ -170,7 +170,7 @@ class ParameterSchemeTest(unittest.TestCase):
            all: ''
            specific: ''
         numbers:
-           float: !!python/object:NeuroTools.parameters.validators.Subclass { type: !!python/name:float }
+           float: !!python/object:neurotools.parameters.validators.Subclass { type: !!python/name:float }
         """
 
         schema = ParameterSchema(yaml.load(schema_str))
@@ -218,7 +218,7 @@ class ParameterSchemeTest(unittest.TestCase):
            all: ''
            specific: ''
         numbers:
-           float: !!python/object:NeuroTools.parameters.validators.Subclass { type: !!python/name:float }
+           float: !!python/object:neurotools.parameters.validators.Subclass { type: !!python/name:float }
         """
 
         def write_to_yaml_tf(s):

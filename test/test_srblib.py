@@ -1,5 +1,5 @@
 """
-Unit tests for the NeuroTools.utilities.srblib module
+Unit tests for the neurotools.utilities.srblib module
 """
 
 import sys
@@ -7,7 +7,7 @@ import unittest
 import numpy
 import os
 import time
-from NeuroTools.utilities import srblib
+from neurotools.utilities import srblib
 
 default_connection = srblib.get_MdasEnv()
 default_server = default_connection.copy()

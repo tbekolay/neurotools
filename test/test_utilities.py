@@ -1,11 +1,11 @@
 """
-Unit tests for the NeuroTools.utilities module
+Unit tests for the neurotools.utilities module
 
 Also see test_srblib.py
 """
 
 import unittest
-from NeuroTools import utilities
+from neurotools import utilities
 
 
 
@@ -13,7 +13,7 @@ class UtilitiesTest(unittest.TestCase):
 
     def runTest(self):
 
-        print 'INFO: Up to this point, NeuroTools.utilities contains no functions or classes.'
+        print 'INFO: Up to this point, neurotools.utilities contains no functions or classes.'
         
         # these are dummy calls of the functions which just raise an exception, telling where the routine has been moved to.
         # satisfies coverage :)
