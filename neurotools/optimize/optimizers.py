@@ -12,8 +12,8 @@ $Id: optimizers.py 366 2008-12-23 21:58:19Z mschmucker $
 __author__="Michael Schmuker"
 __date__ ="$23.12.2008 11:17:16$"
 
-from NeuroTools.optimize import parameter_search
-from NeuroTools.parameters import ParameterSpace
+from neurotools.optimize import parameter_search
+from neurotools.parameters import ParameterSpace
 
 class GridSearcher():
     """
@@ -28,11 +28,11 @@ class GridSearcher():
         Initialize the grid searcher.
         Parameters:
 
-        grid - NeuroTools.ParameterSpace scpecifying the grid.
+        grid - neurotools.ParameterSpace scpecifying the grid.
         func - function to minimize. It should take a dictionary with its
                parameters and return a float.
         searcher - the searcher backend to use. Should be of type
-                   NeuroTools.optimize.parameter_search.ParameterSearcher
+                   neurotools.optimize.parameter_search.ParameterSearcher
                    or a child thereof. Default is to use the plain
                    ParameterSearcher.
         searcherargs  - dictionary with additional keyword arguments for the searcher.
@@ -40,7 +40,7 @@ class GridSearcher():
         import types
         if type(grid) != ParameterSpace:
             raise Exception("The grid must be defined as " +
-                            "NeuroTools.ParameterSpace.")
+                            "neurotools.ParameterSpace.")
         self.grid = grid
         param_iter = grid.iter_inner()
         if type(func ) != types.FunctionType:

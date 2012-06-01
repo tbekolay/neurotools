@@ -203,7 +203,7 @@ class _ChannelInfo:
 			self.units        = self.units.strip()
 		except AttributeError:
 			pass
-		# setst the dt, to be used in NeuroTools
+		# setst the dt, to be used in neurotools
 		interval = self.lChanDvd
 		if interval == 0: interval = 1.
 		# in milliseconds

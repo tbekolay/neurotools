@@ -1,5 +1,5 @@
 """
-NeuroTools.tisean
+neurotools.tisean
 ==================
 
 A collection of functions to create, manipulate and play with TISEAN functions 

@@ -2,8 +2,8 @@ import sys, os.path
 import numpy
 import tempfile, shutil
 import logging
-from NeuroTools import check_dependency
-from NeuroTools.plotting import progress_bar
+from neurotools import check_dependency
+from neurotools.plotting import progress_bar
 
 if check_dependency('matplotlib'):
     from matplotlib.figure import Figure
@@ -45,7 +45,7 @@ class MultipanelMovie(object):
     def write_frames(self, nframes):
         if nframes >= 1e6:
             raise Exception("Cannot handle movies with 1 million frames or more.")
-        self.frame_directory = tempfile.mkdtemp(prefix='tmp_NeuroTools_visualization_')
+        self.frame_directory = tempfile.mkdtemp(prefix='tmp_neurotools_visualization_')
         time_label = self.fig.text(0.01, 0.01, "t = 0 ms", horizontalalignment='left')
         for i in range(int(nframes)):
             for panel,obj in self.panels:

@@ -8,7 +8,7 @@ class AbstractDataStore(object):
         Retrieve data belonging to a component.
         
         The component must have the following attributes:
-          `parameters`: a `NeuroTools` `ParameterSet` object
+          `parameters`: a `neurotools` `ParameterSet` object
           `input`: another component, or None
           `full_type`: the object class and module
           `version`: the source-code version
@@ -29,7 +29,7 @@ class AbstractDataStore(object):
         Store data belonging to a component.
         
         The component must have the following attributes:
-          `parameters`: a `NeuroTools` `ParameterSet` object
+          `parameters`: a `neurotools` `ParameterSet` object
           `input`: another component, or None
           `full_type`: the object class and module
           `version`: the source-code version

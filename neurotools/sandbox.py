@@ -7,7 +7,7 @@ NOT FULLY TESTED! DON'T COMPLAIN IF YOUR COMPUTER EXPLODED!
 
 """
 import copy, os, numpy
-from NeuroTools.parameters import ParameterSet
+from neurotools.parameters import ParameterSet
 
 def make_name(params_set,range_keys):
     range_keys.sort()
@@ -171,7 +171,7 @@ def get_connectivity(params):
 
 def run_simulations(model,url,tag):
     # TODO : this is not recommanded (SyntaxWarning)
-    from NeuroTools.benchmark import *
+    from neurotools.benchmark import *
     #lcn = LocalNetwork(0.1)
     #lcn = model
     print 'Simulations start'

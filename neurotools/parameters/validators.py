@@ -1,5 +1,5 @@
 """
-NeuroTools.parameters.validators
+neurotools.parameters.validators
 ================================
 
 A module implementing validation of ParameterSets against ParameterSchema.
@@ -27,14 +27,14 @@ congruent_dicts      - returns True if two nested dictionaries have the same key
                        otherwise False.
 
 
-See also: NeuroTools.parameters
+See also: neurotools.parameters
 
 """
 
 
 import yaml
-from NeuroTools.parameters import ParameterSet
-import NeuroTools.parameters
+from neurotools.parameters import ParameterSet
+import neurotools.parameters
 
 
 
@@ -209,7 +209,7 @@ class CongruencyValidator(object):
     except ValidationError, e:
        
 
-    See also: NeuroTools.parameters.ParameterSet, ParameterSchema
+    See also: neurotools.parameters.ParameterSet, ParameterSchema
 
     """
 
@@ -312,13 +312,13 @@ def congruent_dicts(template, candidate, subset=False,parent_path=''):
         
 
 
-# Add to NeuroTools.parameters on import    
-NeuroTools.parameters.ParameterSchema = ParameterSchema
-NeuroTools.parameters.Subclass = Subclass
-NeuroTools.parameters.Eval = Eval
-NeuroTools.parameters.SchemaBase = SchemaBase
-NeuroTools.parameters.CongruencyValidator = CongruencyValidator
-NeuroTools.parameters.ValidationError = ValidationError
+# Add to neurotools.parameters on import    
+neurotools.parameters.ParameterSchema = ParameterSchema
+neurotools.parameters.Subclass = Subclass
+neurotools.parameters.Eval = Eval
+neurotools.parameters.SchemaBase = SchemaBase
+neurotools.parameters.CongruencyValidator = CongruencyValidator
+neurotools.parameters.ValidationError = ValidationError
 
 
 

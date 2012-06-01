@@ -1,20 +1,20 @@
 # -*- coding: utf-8 -*-
 """
-NeuroTools
+neurotools
 ==========
 
-NeuroTools is not a neural simulator, but a collection of tools
+neurotools is not a neural simulator, but a collection of tools
 to support all tasks associated with a neural simulation project which
 are not handled by the simulation engine.
 
 For more information see:
-http://neuralensemble.org/NeuroTools
+http://neuralensemble.org/neurotools
 
 
 Available subpackages
 ---------------------
 
-NeuroTools functionality is modularized as follows: 
+neurotools functionality is modularized as follows: 
 
 signals    - provides core classes for manipulation of spike trains and analog signals. 
 spike2     - offers an easy way for reading data from CED's Spike2 Son files. 
@@ -23,7 +23,7 @@ analysis   - cross-correlation, tuning curves, frequency spectrum, etc.
 stgen      - various stochastic process generators relevant for Neuroscience 
              (OU, poisson, inhomogenous gamma, ...). 
 utilities  - miscellaneous stuff, like SRB access.
-io         - NeuroTools support for reading and writing of files in various formats. 
+io         - neurotools support for reading and writing of files in various formats. 
 plotting   - routines for plotting and visualization.
 datastore  - a consistent interface for persistent data storage (e.g. for caching intermediate results).
 random     - a set of classes representing statistical distributions
@@ -31,8 +31,8 @@ random     - a set of classes representing statistical distributions
 Sub-package specific documentation is available by importing the
 sub-package, and requesting help on it:
 
->>> import NeuroTools.signals
->>> help(NeuroTools.signals)
+>>> import neurotools.signals
+>>> help(neurotools.signals)
 """
 
 __all__ = ['analysis', 'parameters', 'plotting', 'signals', 'stgen', 'io', 'datastore', 'utilities', 'spike2', 'random', 'optimize', 'tisean']
@@ -55,7 +55,7 @@ dependencies = {'pylab' : {'website' : 'http://matplotlib.sourceforge.net/', 'is
                 'pygsl' : {'website' : 'http://pygsl.sourceforge.net/', 'is_present' : False, 'check':False},
                 'PIL'   : {'website' : 'http://www.pythonware.com/products/pil/', 'is_present':False, 'check':False},
                 'scipy' : {'website' : 'http://numpy.scipy.org/' , 'is_present' : False, 'check':False},
-                'NeuroTools.facets.hdf5' : {'website' : None, 'is_present' : False, 'check':False},
+                'neurotools.facets.hdf5' : {'website' : None, 'is_present' : False, 'check':False},
                 'srblib'  : {'website' : 'http://www.sdsc.edu/srb/index.php/Python', 'is_present' : False, 'check':False},
                 'rpy'     : {'website' : 'http://rpy.sourceforge.net/', 'is_present' : False, 'check':False},
                 'rpy2'     : {'website' : 'http://rpy.sourceforge.net/rpy2.html', 'is_present' : False, 'check':False},

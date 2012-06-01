@@ -2,8 +2,8 @@
 Implementation of an SQL-based DataStore using the Django ORM.
 """
 
-from NeuroTools.datastore.interface import AbstractDataStore
-from NeuroTools.datastore.keygenerators import full_type
+from neurotools.datastore.interface import AbstractDataStore
+from neurotools.datastore.keygenerators import full_type
 from django.conf import settings
 
 DJANGO_CONFIGURED = False
@@ -18,7 +18,7 @@ class DjangoORMDataStore(AbstractDataStore):
            raise Exception("Django already configured. It is not possible to have more than one DjangoORMDataStore object at a time")
         self.root_dir = data_root_dir
         settings.configure(USE_I18N=False,
-                           INSTALLED_APPS=('NeuroTools.datastore.django_orm',),
+                           INSTALLED_APPS=('neurotools.datastore.django_orm',),
                            **database_parameters)
         DJANGO_CONFIGURED = True
         from django.core.management import call_command 

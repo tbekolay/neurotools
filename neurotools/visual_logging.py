@@ -1,5 +1,5 @@
 """
-NeuroTools.visual_logging
+neurotools.visual_logging
 =========================
 
 Log graphs, rather than text. This is useful when dealing with large data
@@ -29,7 +29,7 @@ log         - plots data with a user-specified level
 """
 
 import zipfile, atexit, os
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 from datetime import datetime
 from logging import CRITICAL, DEBUG, ERROR, FATAL, INFO, WARN, WARNING, NOTSET
 from time import sleep

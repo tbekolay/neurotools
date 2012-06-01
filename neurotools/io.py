@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
 """
-NeuroTools.io
+neurotools.io
 ==================
 
-A collection of functions to handle all the inputs/outputs of the NeuroTools.signals
+A collection of functions to handle all the inputs/outputs of the neurotools.signals
 file, used by the loaders.
 
 Classes
@@ -11,22 +11,22 @@ Classes
 
 FileHandler        - abstract class which should be overriden, managing how a file will load/write
                      its data
-StandardTextFile   - object used to manipulate text representation of NeuroTools objects (spikes or
+StandardTextFile   - object used to manipulate text representation of neurotools objects (spikes or
                      analog signals)
-StandardPickleFile - object used to manipulate pickle representation of NeuroTools objects (spikes or
+StandardPickleFile - object used to manipulate pickle representation of neurotools objects (spikes or
                      analog signals)
 NestFile           - object used to manipulate raw NEST file that would not have been saved by pyNN
                      (without headers)
-DataHandler        - object to establish the interface between NeuroTools.signals and NeuroTools.io
+DataHandler        - object to establish the interface between neurotools.signals and neurotools.io
 
-All those objects can be used with NeuroTools.signals
+All those objects can be used with neurotools.signals
 
     >> data = StandardTextFile("my_data.dat")
     >> spikes = load(data,'s')
 """
 
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 import os, logging, cPickle, numpy
 DEFAULT_BUFFER_SIZE = -1
@@ -112,7 +112,7 @@ class StandardTextFile(FileHandler):
     def __read_metadata(self):
         """
         Read the informations that may be contained in the header of
-        the NeuroTools object, if saved in a text file
+        the neurotools object, if saved in a text file
         """
         cmd = ''
         variable = None
@@ -138,7 +138,7 @@ class StandardTextFile(FileHandler):
 
     def __fill_metadata(self, object):
         """
-        Fill the metadata from those of a NeuroTools object before writing the object
+        Fill the metadata from those of a neurotools object before writing the object
         """
         self.metadata['dimensions'] = str(object.dimensions)
         if len(object.id_list > 0):
@@ -214,7 +214,7 @@ class StandardTextFile(FileHandler):
     def read_spikes(self, params):
         self.__read_metadata()
         p    = self.__check_params(params)
-        from NeuroTools.signals import spikes
+        from neurotools.signals import spikes
         data   = self.get_data()
         result = spikes.SpikeList(data, p['id_list'], p['t_start'], p['t_stop'], p['dims'])
         del data
@@ -223,7 +223,7 @@ class StandardTextFile(FileHandler):
     def read_analogs(self, type, params):
         self.__read_metadata()
         p = self.__check_params(params)
-        from NeuroTools.signals import analogs
+        from neurotools.signals import analogs
         if type == "vm":
             return analogs.VmList(self.get_data(), p['id_list'], p['dt'], p['t_start'], p['t_stop'], p['dims'])
         elif type == "current":
@@ -246,7 +246,7 @@ class StandardPickleFile(FileHandler):
 
     def __fill_metadata(self, object):
         """
-        Fill the metadata from those of a NeuroTools object before writing the object
+        Fill the metadata from those of a neurotools object before writing the object
         """
         self.metadata['dimensions'] = str(object.dimensions)
         self.metadata['first_id']   = numpy.min(object.id_list)
@@ -375,7 +375,7 @@ class NestFile(FileHandler):
                 SpikeList Object (with params taken into account)
         """
         p = self.__check_params(params)
-        from NeuroTools import signals
+        from neurotools import signals
         data      = self.get_data()
         data, p   = self._fix_id_list(data, p)
         return signals.SpikeList(data, p['id_list'], p['t_start'], p['t_stop'], p['dims'])
@@ -384,7 +384,7 @@ class NestFile(FileHandler):
         p       = self.__check_params(params)
         data    = self.get_data()
         data, p = self._fix_id_list(data, p)
-        from NeuroTools.signals import analogs
+        from neurotools.signals import analogs
         if type == "vm":
             return analogs.VmList(data, p['id_list'], p['dt'], p['t_start'], p['t_stop'], p['dims'])
         elif type == "current":
@@ -405,7 +405,7 @@ class PyNNNumpyBinaryFile(FileHandler):
         self.fileobj = open(self.filename, 'r')
         
     def read_spikes(self, params):
-        from NeuroTools.signals import spikes
+        from neurotools.signals import spikes
         contents = numpy.load(self.fileobj)
         spike_data = contents['data'][:, (1,0)]
         self.metadata = M = {}
@@ -426,7 +426,7 @@ class PyNNNumpyBinaryFile(FileHandler):
 
 class DataHandler(object):
     """
-    Class to establish the interface for loading/saving objects in NeuroTools
+    Class to establish the interface for loading/saving objects in neurotools
     
     Inputs:
         filename - the user file for reading/writing data. By default, if this is
@@ -502,7 +502,7 @@ class DataHandler(object):
         """
         Save the object defined in self.object with the method os self.user_file
         
-        Note that you can add your own format for I/O of such NeuroTools objects
+        Note that you can add your own format for I/O of such neurotools objects
         """
         ### Here, you could add your own format if you have created the appropriate
         ### manager.

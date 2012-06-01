@@ -4,7 +4,7 @@ mixedutils.py
 Routines and classes for FACETS members and friends.
 """
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 def save_image(arr, filename):
     assert filename[-3:] == "png"
@@ -24,10 +24,10 @@ At the moment, these are:
 * HDF5
 """
 
-if check_dependency('NeuroTools.facets.hdf5'):
-    from NeuroTools.facets.hdf5 import FileExtension as file_extension
+if check_dependency('neurotools.facets.hdf5'):
+    from neurotools.facets.hdf5 import FileExtension as file_extension
 
-from NeuroTools.facets.fkbtools import png_to_hdf5, hdf5_to_png
+from neurotools.facets.fkbtools import png_to_hdf5, hdf5_to_png
 import os, sys
 
 

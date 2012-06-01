@@ -1,6 +1,6 @@
 import numpy
-import NeuroTools.signals as signals
-from NeuroTools.spike2.sonpy import son
+import neurotools.signals as signals
+from neurotools.spike2.sonpy import son
 
 """
 Jens Kremkow
@@ -43,7 +43,7 @@ def load_channel(filename,channel=1,start=None,stop=None):
 
 class Channel(numpy.ndarray):
     """
-    Spike2 channels types which are not yet supported by NeuroTools.signals.
+    Spike2 channels types which are not yet supported by neurotools.signals.
     
     timeunits = microseconds,milliseconds,seconds
     """
@@ -110,7 +110,7 @@ class Channel(numpy.ndarray):
         
 class Adc(signals.AnalogSignal):
     """
-    Adc represented as analog signal. See NeuroTools.signal.AnalogSignal for further details.
+    Adc represented as analog signal. See neurotools.signal.AnalogSignal for further details.
     """
     pass
 

@@ -1,9 +1,9 @@
 """
-NeuroTools.plotting
+neurotools.plotting
 ===================
 
 This module contains a collection of tools for plotting and image processing that 
-shall facilitate the generation and handling of NeuroTools data visualizations.
+shall facilitate the generation and handling of neurotools data visualizations.
 It utilizes the Matplotlib and the Python Imaging Library (PIL) packages.
 
 
@@ -27,7 +27,7 @@ save_2D_movie       - saves a list of 2D numpy arrays of gray shades between 0 a
 """
 
 import sys, numpy
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 
 # Check availability of pylab (essential!)
@@ -80,7 +80,7 @@ def progress_bar(progress):
         >> progress_bar(0.7)
             |===================================               |
     """
-    progressConditionStr = "ERROR: The argument of function NeuroTools.plotting.progress_bar(...) must be a float between 0. and 1.!"
+    progressConditionStr = "ERROR: The argument of function neurotools.plotting.progress_bar(...) must be a float between 0. and 1.!"
     assert (type(progress) == float) and (progress >= 0.) and (progress <= 1.), progressConditionStr
     length = 50
     filled = int(round(length*progress))
@@ -145,7 +145,7 @@ def set_axis_limits(subplot, xmin, xmax, ymin, ymax):
         subplot.set_xlim(xmin, xmax)
         subplot.set_ylim(ymin, ymax)
     else: 
-        raise Exception('ERROR: The plot passed to function NeuroTools.plotting.set_axis_limits(...) does not provide limit defining functions.')
+        raise Exception('ERROR: The plot passed to function neurotools.plotting.set_axis_limits(...) does not provide limit defining functions.')
 
 
 
@@ -172,7 +172,7 @@ def set_labels(subplot, xlabel, ylabel):
         subplot.set_xlabel(xlabel)
         subplot.set_ylabel(ylabel)
     else: 
-        raise Exception('ERROR: The plot passed to function NeuroTools.plotting.set_label(...) does not provide labelling functions.')
+        raise Exception('ERROR: The plot passed to function neurotools.plotting.set_label(...) does not provide labelling functions.')
 
 
 
@@ -216,9 +216,9 @@ def save_2D_image(mat, filename):
         >> a = numpy.random.random([100,100]) # creates a 2D numpy array with random values between 0. and 1.
         >> save_2D_image(a,'randomarray100x100.png')
     """
-    assert PILIMAGEUSE, "ERROR: Since PIL has not been detected, the function NeuroTools.plotting.save_2D_image(...) is not supported!"
-    matConditionStr = "ERROR: First argument of function NeuroTools.plotting.imsave(...) must be a 2D numpy array of floats between 0. and 1.!"
-    filenameConditionStr = "ERROR: Second argument of function NeuroTools.plotting.imsave(...) must be a string ending on \".png\"!"
+    assert PILIMAGEUSE, "ERROR: Since PIL has not been detected, the function neurotools.plotting.save_2D_image(...) is not supported!"
+    matConditionStr = "ERROR: First argument of function neurotools.plotting.imsave(...) must be a 2D numpy array of floats between 0. and 1.!"
+    filenameConditionStr = "ERROR: Second argument of function neurotools.plotting.imsave(...) must be a string ending on \".png\"!"
     assert (type(mat) == numpy.ndarray) and (mat.ndim == 2) and (mat.min() >= 0.) and (mat.max() <= 1.), matConditionStr
     assert (type(filename) == str) and (len(filename) > 4) and (filename[-4:].lower() == '.png'), filenameConditionStr
     mode = 'L'
@@ -248,13 +248,13 @@ def save_2D_movie(frame_list, filename, frame_duration):
     try:
         import zipfile
     except ImportError:
-        raise ImportError("ERROR: Python module zipfile not found! Needed by NeuroTools.plotting.save_2D_movie(...)!")
+        raise ImportError("ERROR: Python module zipfile not found! Needed by neurotools.plotting.save_2D_movie(...)!")
     try:
         import StringIO
     except ImportError:
-        raise ImportError("ERROR: Python module StringIO not found! Needed by NeuroTools.plotting.save_2D_movie(...)!")
-    assert PILIMAGEUSE, "ERROR: Since PIL has not been detected, the function NeuroTools.plotting.save_2D_movie(...) is not supported!"
-    filenameConditionStr = "ERROR: Second argument of function NeuroTools.plotting.save_2D_movie(...) must be a string ending on \".zip\"!"
+        raise ImportError("ERROR: Python module StringIO not found! Needed by neurotools.plotting.save_2D_movie(...)!")
+    assert PILIMAGEUSE, "ERROR: Since PIL has not been detected, the function neurotools.plotting.save_2D_movie(...) is not supported!"
+    filenameConditionStr = "ERROR: Second argument of function neurotools.plotting.save_2D_movie(...) must be a string ending on \".zip\"!"
     assert (type(filename) == str) and (len(filename) > 4) and (filename[-4:].lower() == '.zip'), filenameConditionStr
     zf = zipfile.ZipFile(filename, 'w', zipfile.ZIP_DEFLATED)
     container = filename[:-4] # remove .zip

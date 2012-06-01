@@ -1,5 +1,5 @@
 """
-NeuroTools.signals.analogs
+neurotools.signals.analogs
 ==================
 
 A collection of functions to create, manipulate and play with analog signals. 
@@ -27,19 +27,19 @@ load_conductancelist - function to load a ConductanceList object (inherits from 
                        ConductanceLists, one for the excitatory conductance and one for the inhibitory conductance
 load                 - a generic loader for all the previous load methods.
 
-See also NeuroTools.signals.spikes
+See also neurotools.signals.spikes
 """
 
 import os, re, numpy
-from NeuroTools import check_dependency, check_numpy_version
-from NeuroTools.io import *
-from NeuroTools.plotting import get_display, set_axis_limits, set_labels, SimpleMultiplot
+from neurotools import check_dependency, check_numpy_version
+from neurotools.io import *
+from neurotools.plotting import get_display, set_axis_limits, set_labels, SimpleMultiplot
 
 if check_dependency('psyco'):
     import psyco
     psyco.full()
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 HAVE_PYLAB = check_dependency('pylab')
 HAVE_MATPLOTLIB = check_dependency('matplotlib')
 if HAVE_PYLAB:
@@ -454,7 +454,7 @@ class AnalogSignal(object):
             1.0063757246782141
 
         See also:
-            NeuroTools.analysis.ccf
+            neurotools.analysis.ccf
             http://en.wikipedia.org/wiki/Covariance
 
         Author: Eilif Muller

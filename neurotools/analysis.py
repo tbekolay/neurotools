@@ -1,9 +1,9 @@
 # -*- coding: utf8 -*-
 """
-NeuroTools.analysis
+neurotools.analysis
 ==================
 
-A collection of analysis functions that may be used by NeuroTools.signals or other packages.
+A collection of analysis functions that may be used by neurotools.signals or other packages.
 
 Classes
 -------
@@ -26,7 +26,7 @@ import os
 
 import numpy
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 HAVE_PYLAB = check_dependency('pylab')
 HAVE_MATPLOTLIB = check_dependency('matplotlib')
@@ -93,7 +93,7 @@ def ccf(x, y, axis=None):
     iFxy = numpy.concatenate((iFxy[len(iFxy)/2:len(iFxy)],iFxy[0:len(iFxy)/2]))
     return iFxy/varxy
 
-from NeuroTools.plotting import get_display, set_labels
+from neurotools.plotting import get_display, set_labels
 
 HAVE_PYLAB = check_dependency('pylab')
 

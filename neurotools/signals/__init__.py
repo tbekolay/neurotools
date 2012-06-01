@@ -1,5 +1,5 @@
 """
-NeuroTools.signals
+neurotools.signals
 ==================
 
 A collection of functions to create, manipulate and play with analog signals. 
@@ -34,9 +34,9 @@ from analogs import *
 def load(user_file, datatype):
     """
     Convenient data loader for results produced by pyNN. Return the corresponding
-    NeuroTools object. Datatype argument may become optionnal in the future, but
+    neurotools object. Datatype argument may become optionnal in the future, but
     for now it is necessary to specify the type of the recorded data. To have a better control
-    on the parameters of the NeuroTools objects, see the load_*** functions.
+    on the parameters of the neurotools objects, see the load_*** functions.
     
     Inputs:
         user_file - the user_file object with read/write methods. By defaults, if a string

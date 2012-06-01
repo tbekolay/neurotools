@@ -2,7 +2,7 @@
 ===========
 Spike2 Library
 ===========
-For reading data from CED's Spike2 Son files into the NeuroTools enviroment.
+For reading data from CED's Spike2 Son files into the neurotools enviroment.
 The data is read from the CED files using sonpy.
 
 Jens Kremkow

@@ -1,5 +1,5 @@
 """
-NeuroTools.stgen
+neurotools.stgen
 ================
 
 A collection of tools for stochastic process generation.
@@ -21,7 +21,7 @@ gamma_hazard - Compute the hazard function for a gamma process with parameters a
 """
 
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 from signals import SpikeTrain, AnalogSignal
 from numpy import array, log
 import numpy

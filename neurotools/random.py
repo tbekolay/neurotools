@@ -1,5 +1,5 @@
 """
-NeuroTools.random
+neurotools.random
 =====================
 
 A set of classes representing statistical distributions, with an interface that
@@ -14,7 +14,7 @@ UniformDist - uniform distribution
 
 """
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 import numpy, numpy.random
 

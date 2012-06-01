@@ -6,19 +6,19 @@ Routines and classes that make life easier.
 
 def imsave(mat,filename):
 
-    raise Exception("This function has been moved to NeuroTools.plotting and is now called save_2D_image(...)!")
+    raise Exception("This function has been moved to neurotools.plotting and is now called save_2D_image(...)!")
 
 
 
 def progress_bar(progress):
     
-    raise Exception("This function has been moved to NeuroTools.plotting!")
+    raise Exception("This function has been moved to neurotools.plotting!")
 
 
 
 def exportPNGZip(frame_list, filename, frame_duration):
 
-    raise Exception("This function has been moved to NeuroTools.plotting and is now called save_2D_movie(...)!")
+    raise Exception("This function has been moved to neurotools.plotting and is now called save_2D_movie(...)!")
 
 
 

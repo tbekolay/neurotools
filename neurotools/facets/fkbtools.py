@@ -3,7 +3,7 @@ Assorted tools relating to the FACETS Knowledge Base (FKB)
 $Id: fkbtools.py 131 2007-03-15 08:08:13Z apdavison $
 """
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 if check_dependency('PIL'):
     import PIL
@@ -11,10 +11,10 @@ if check_dependency('PIL'):
 if check_dependency('tables'):
     import tables
 
-use_hdf5 = check_dependency('NeuroTools.facets.hdf5')
+use_hdf5 = check_dependency('neurotools.facets.hdf5')
 if use_hdf5:
-    import NeuroTools.facets.hdf5.FileExtension as file_extension
-    import NeuroTools.facets.hdf5.Movie as movie
+    import neurotools.facets.hdf5.FileExtension as file_extension
+    import neurotools.facets.hdf5.Movie as movie
 
 if check_dependency('srblib'):
     import srblib

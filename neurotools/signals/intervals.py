@@ -1,4 +1,4 @@
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 HAVE_INTERVAL = check_dependency('interval')
 

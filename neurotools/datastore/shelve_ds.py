@@ -2,8 +2,8 @@
 Implementation of a `shelve`-based DataStore
 """
 
-from NeuroTools.datastore.interface import AbstractDataStore
-from NeuroTools.datastore.keygenerators import join_with_underscores
+from neurotools.datastore.interface import AbstractDataStore
+from neurotools.datastore.keygenerators import join_with_underscores
 import os.path, shelve
 import logging
 

@@ -1,5 +1,5 @@
 """
-NeuroTools.parameters
+neurotools.parameters
 =====================
 
 A module for dealing with model parameters.
@@ -14,11 +14,11 @@ ParameterTable  - a sub-class of ParameterSet that can represent a table of para
 ParameterSpace  - a collection of ParameterSets, representing multiple points in
                   parameter space.
 
-**Imported from NeuroTools.parameters.validators**
+**Imported from neurotools.parameters.validators**
 
 ParameterSchema      - A sub-class of ParameterSet against which other ParameterSets can be validated
                        against using a Validator as found in the sub-package
-                       NeuroTools.parameters.validators 
+                       neurotools.parameters.validators 
 
 CongruencyValidator  - A CongruencyValidator validates a ParameterSet against a ParameterSchema
                        via member "validate(parameter_set,parameter_schema)".
@@ -50,10 +50,10 @@ validators        - A module implementing validation of ParameterSets against Pa
 
 import urllib, copy, warnings, numpy, numpy.random  # to be replaced with srblib
 from urlparse import urlparse
-from NeuroTools import check_dependency
-from NeuroTools.random import ParameterDist, GammaDist, UniformDist, NormalDist
-#from NeuroTools.parameters.validators import schema_checkers_namespace
-#from NeuroTools.parameters.validators import Subclass
+from neurotools import check_dependency
+from neurotools.random import ParameterDist, GammaDist, UniformDist, NormalDist
+#from neurotools.parameters.validators import schema_checkers_namespace
+#from neurotools.parameters.validators import Subclass
 
 def isiterable(x):
     return (hasattr(x,'__iter__') and not isinstance(x, basestring))
@@ -168,7 +168,7 @@ class ParameterSet(dict):
     
     Usage example:
     >>> sim_params = ParameterSet({'dt': 0.1, 'tstop': 1000.0})
-    >>> exc_cell_params = ParameterSet("http://neuralensemble.org/svn/NeuroTools/example.params")
+    >>> exc_cell_params = ParameterSet("http://neuralensemble.org/svn/neurotools/example.params")
     >>> inh_cell_params = ParameterSet({'tau_m': 15.0, 'cm': 0.5})
     >>> network_params = ParameterSet({'excitatory_cells': exc_cell_params, 'inhibitory_cells': inh_cell_params})
     >>> P = ParameterSet({'sim': sim_params, 'network': network_params})

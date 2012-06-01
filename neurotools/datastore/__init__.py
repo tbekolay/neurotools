@@ -1,5 +1,5 @@
 """
-NeuroTools.datastore
+neurotools.datastore
 ====================
 
 The `datastore` package aims to present a consistent interface for persistent
@@ -16,7 +16,7 @@ concept of time to this).
 
 Hence, any object (which we call a 'component' in this context) must have
 the following attributes:
-  `parameters`: a `NeuroTools` `ParameterSet` object
+  `parameters`: a `neurotools` `ParameterSet` object
   `input`: another component or `None`; we assume a single
 input for now. A list of inputs should also be possible. We need to be wary
 of recurrent loops, in which two components both have each other as direct or
@@ -37,7 +37,7 @@ DjangoORMDataStore - Persistent data store using the Django ORM
 """
 
 import warnings
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 if check_dependency("django"):
     from django_orm import DjangoORMDataStore

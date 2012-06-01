@@ -51,7 +51,7 @@ Todo:
   scipy.optimize.
 """
 
-from NeuroTools import check_dependency
+from neurotools import check_dependency
 
 # Check availability and version of IPython
 if check_dependency('IPython'):
