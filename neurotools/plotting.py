@@ -112,7 +112,7 @@ def pylab_params(fig_width_pt=246.0,
 
     params = {
             'axes.labelsize'  : text_fontsize,
-            'text.fontsize'   : text_fontsize,
+            'font.size'       : text_fontsize,
             'xtick.labelsize' : tick_labelsize,
             'ytick.labelsize' : tick_labelsize,
             'text.usetex'     : useTex,

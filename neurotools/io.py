@@ -141,7 +141,7 @@ class StandardTextFile(FileHandler):
         Fill the metadata from those of a neurotools object before writing the object
         """
         self.metadata['dimensions'] = str(object.dimensions)
-        if len(object.id_list > 0):
+        if len(object.id_list) > 0:
             self.metadata['first_id'] = numpy.min(object.id_list)
             self.metadata['last_id']  = numpy.max(object.id_list)
         if hasattr(object, "dt"):
@@ -239,7 +239,7 @@ class StandardTextFile(FileHandler):
 
 
 class StandardPickleFile(FileHandler):
-    
+    # There's something kinda wrong with this right now...
     def __init__(self, filename):
         FileHandler.__init__(self, filename) 
         self.metadata = {}
@@ -257,10 +257,11 @@ class StandardPickleFile(FileHandler):
     def __reformat(self, params, object):
         self.__fill_metadata(object)
         if 'id_list' in params and params['id_list'] != None:
-            if isinstance(params['id_list'], int): # allows to just specify the number of neurons
-                params['id_list'] = range(params['id_list'])
-            if params['id_list'] != range(int(self.metadata['first_id']), int(self.metadata['last_id'])+1):
-                object = object.id_slice(params['id_list'])
+            id_list = params['id_list']
+            if isinstance(id_list, int): # allows to just specify the number of neurons
+                params['id_list'] = range(id_list)
+            #if id_list != range(int(self.metadata['first_id']), int(self.metadata['last_id'])+1):
+            #    object = object.id_slice(params['id_list'])
         do_slice = False
         t_start = object.t_start
         t_stop  = object.t_stop

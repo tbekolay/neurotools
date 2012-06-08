@@ -26,14 +26,15 @@ class PylabParamsTest(unittest.TestCase):
 
         testDict = {
             'axes.labelsize'  : text_fontsize,
-            'text.fontsize'   : text_fontsize,
+            'font.size'       : text_fontsize,
             'xtick.labelsize' : tick_labelsize,
             'ytick.labelsize' : tick_labelsize,
             'text.usetex'     : useTex,
             'figure.figsize'  : [fig_width, fig_height]}
 
-        plotting.set_pylab_params(fig_width_pt=fig_width_pt, ratio=ratio, text_fontsize=text_fontsize, \
-            tick_labelsize=tick_labelsize, useTex=useTex)
+        plotting.set_pylab_params(fig_width_pt=fig_width_pt, ratio=ratio,
+                                  text_fontsize=text_fontsize,
+                                  tick_labelsize=tick_labelsize, useTex=useTex)
         for k in testDict.keys():
             assert pylab.rcParams.has_key(k)
             assert pylab.rcParams[k] == testDict[k]

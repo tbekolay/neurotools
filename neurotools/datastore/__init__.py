@@ -23,7 +23,7 @@ of recurrent loops, in which two components both have each other as direct or
 indirect inputs).
   `full_type`: the object class and module
   `version`: the source-code version
-  
+
 Classes
 -------
 
@@ -33,7 +33,7 @@ DjangoORMDataStore - Persistent data store using the Django ORM
                      (object-relational mapping - an object-oriented interface
                      to an SQL database) to store/retrieve keys/indices
                      with data stored using `pickle` on the filesystem.
-  
+
 """
 
 import warnings
@@ -49,6 +49,3 @@ from shelve_ds import ShelveDataStore
 #   SRBDataStore  
 #   HttpDataStore 
 #   HDF5DataStore
-
-
-    

@@ -1042,7 +1042,8 @@ class SpikeList(object):
         if sub_list == None:
             return self.id_list
         elif type(sub_list) == int:
-            import ipdb; ipdb.set_trace()
+            #import ipdb
+            #ipdb.set_trace()
             return numpy.random.permutation(self.id_list)[0:sub_list]
         else:
             return sub_list
@@ -1552,7 +1553,7 @@ class SpikeList(object):
             return values, xaxis
         else:
             xlabel = " CV ISI"
-            ylabel = "% of Neurons"
+            ylabel = "\% of Neurons"
             set_labels(subplot, xlabel, ylabel)
             subplot.plot(xaxis, values, **kwargs)
             pylab.draw()
@@ -1701,7 +1702,7 @@ class SpikeList(object):
             else:
                 values, xaxis = numpy.histogram(rates, nbins)
             xlabel = "Average Firing Rate (Hz)"
-            ylabel = "% of Neurons"
+            ylabel = "\% of Neurons"
             set_labels(subplot, xlabel, ylabel)
             subplot.plot(xaxis, values/float(values.sum()), **kwargs)
             pylab.draw()

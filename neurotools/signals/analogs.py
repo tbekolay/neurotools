@@ -742,7 +742,7 @@ class AnalogSignalList(object):
     def save(self, user_file):
         """
         Save the AnalogSignal in a text or binary file
-        
+
             user_file - The user file that will have its own read/write method
                         By default, if s tring is provided, a StandardTextFile object
                         will be created. Nevertheless, you can also
@@ -754,7 +754,7 @@ class AnalogSignalList(object):
         """
         as_loader = DataHandler(user_file, self)
         as_loader.save()
-    
+
     def mean(self):
         """
         Return the mean AnalogSignal after having performed the average of all the signals
