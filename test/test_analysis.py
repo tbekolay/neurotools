@@ -20,22 +20,22 @@ class AnalysisTest(unittest.TestCase):
 
     def setUp(self):
         #We could run the test from anywhere...
-        self.p = os.path.realpath(__file__)[:-16]  # hack!
+        self.p = '/'.join(os.path.realpath(__file__).split('/')[:-1])
         
         #The following are used for the make_kernel testcases
-        self.box = scipy.io.loadmat(self.p + 'analysis/make_kernel/box.mat')
-        self.tri = scipy.io.loadmat(self.p + 'analysis/make_kernel/tri.mat')
-        self.epa = scipy.io.loadmat(self.p + 'analysis/make_kernel/epa.mat')
-        self.gau = scipy.io.loadmat(self.p + 'analysis/make_kernel/gau.mat')
-        self.alp = scipy.io.loadmat(self.p + 'analysis/make_kernel/alp.mat')
-        self.exp = scipy.io.loadmat(self.p + 'analysis/make_kernel/exp.mat')
+        self.box = scipy.io.loadmat(self.p + '/analysis/make_kernel/box.mat')
+        self.tri = scipy.io.loadmat(self.p + '/analysis/make_kernel/tri.mat')
+        self.epa = scipy.io.loadmat(self.p + '/analysis/make_kernel/epa.mat')
+        self.gau = scipy.io.loadmat(self.p + '/analysis/make_kernel/gau.mat')
+        self.alp = scipy.io.loadmat(self.p + '/analysis/make_kernel/alp.mat')
+        self.exp = scipy.io.loadmat(self.p + '/analysis/make_kernel/exp.mat')
         self.alp_reversed = scipy.io.loadmat(
-            self.p + 'analysis/make_kernel/alp_reversed.mat')
+            self.p + '/analysis/make_kernel/alp_reversed.mat')
         self.exp_reversed = scipy.io.loadmat(
-            self.p + 'analysis/make_kernel/exp_reversed.mat')
+            self.p + '/analysis/make_kernel/exp_reversed.mat')
         
         #Used for the testcases of the crosscorrelate function
-        spk = signals.load_spikelist(self.p + 'analysis/crosscorrelate/spike_data')
+        spk = signals.load_spikelist(self.p + '/analysis/crosscorrelate/spike_data')
         self.spk0 = spk[0]
         self.spk1 = spk[1]
 
@@ -176,7 +176,7 @@ class AnalysisTest(unittest.TestCase):
     def testCrosscorrelateNoLag(self):
         int, int_, norm = analysis.crosscorrelate(self.spk0, self.spk1)
         #The following are output was generated with the FIND MATLAB toolbox
-        matlab_int = numpy.loadtxt(self.p + 'analysis/crosscorrelate/out_matlab_int')
+        matlab_int = numpy.loadtxt(self.p + '/analysis/crosscorrelate/out_matlab_int')
         numpy.testing.assert_array_almost_equal(int, matlab_int,
                                                     decimal=3)
         #The int_ output has a random component and for this reason the test
@@ -187,7 +187,7 @@ class AnalysisTest(unittest.TestCase):
         """
         int, int_, norm, = analysis.crosscorrelate(self.spk0, self.spk1,
                                                    lag=100.0)
-        matlab_int = numpy.loadtxt(self.p + 'analysis/crosscorrelate/out_matlab_int_lag_100')
+        matlab_int = numpy.loadtxt(self.p + '/analysis/crosscorrelate/out_matlab_int_lag_100')
         numpy.testing.assert_array_almost_equal(int, matlab_int, decimal = 3)
             
     def testCrosscorrelateLag500(self):
@@ -195,7 +195,7 @@ class AnalysisTest(unittest.TestCase):
         """
         int, int_, norm = analysis.crosscorrelate(self.spk0, self.spk1,
                                                   lag=500.0)
-        matlab_int = numpy.loadtxt(self.p + 'analysis/crosscorrelate/out_matlab_int_lag_500')
+        matlab_int = numpy.loadtxt(self.p + '/analysis/crosscorrelate/out_matlab_int_lag_500')
         numpy.testing.assert_array_almost_equal(int, matlab_int, decimal = 3)
             
 if __name__ == "__main__":

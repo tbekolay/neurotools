@@ -184,13 +184,13 @@ class StandardTextFile(FileHandler):
                 header = False
                 break
             idx += 1
-            for i in xrange(idx, len(contents)):
-                line = contents[i].strip().split(sepchar)
-                id   = [float(line[-1])]
-                id  += map(float, line[0:-1])
-                data.append(id)
-            logging.debug("Loaded %d lines of data from %s" % (len(data), self))
-            data = numpy.array(data, numpy.float32)
+        for i in xrange(idx, len(contents)):
+            line = contents[i].strip().split(sepchar)
+            id   = [float(line[-1])]
+            id  += map(float, line[0:-1])
+            data.append(id)
+        logging.debug("Loaded %d lines of data from %s" % (len(data), self))
+        data = numpy.array(data, numpy.float32)
         return data
     
     def write(self, object):
