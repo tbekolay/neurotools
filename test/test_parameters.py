@@ -31,6 +31,9 @@ import pickle
 #        import neurotools.parameters
 #        self.assertFalse(neurotools.parameters.have_scipy)
 
+import matplotlib
+matplotlib.use('Agg')
+
 class ParameterRangeTest(unittest.TestCase):
     
     def test_simple_create(self):

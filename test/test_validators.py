@@ -4,6 +4,9 @@ Unit tests for the neurotools.parameters module
 Also see the doctests in doc/parameters.txt
 """
 
+import matplotlib
+matplotlib.use('Agg')
+
 import neurotools.parameters
 from neurotools.random import GammaDist, UniformDist, NormalDist, ParameterDist
 import os

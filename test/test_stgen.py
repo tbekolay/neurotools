@@ -2,6 +2,9 @@
 Unit tests for the neurotools.stgen module
 """
 
+import matplotlib
+matplotlib.use('Agg')
+
 import unittest
 from neurotools import stgen
 from neurotools import signals

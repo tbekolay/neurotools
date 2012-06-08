@@ -3,6 +3,9 @@ Unit tests for the neurotools.random module
 
 """
 
+import matplotlib
+matplotlib.use('Agg')
+
 import unittest
 from neurotools.random import *
 

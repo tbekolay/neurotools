@@ -1,6 +1,10 @@
 """
 Unit tests for the neurotools.analysis module
 """
+
+import matplotlib
+matplotlib.use('Agg')
+
 import numpy
 import os
 import scipy.io

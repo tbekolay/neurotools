@@ -30,10 +30,6 @@ from neurotools import check_dependency
 
 import os, logging, cPickle, numpy
 DEFAULT_BUFFER_SIZE = -1
-HAVE_TABLEIO        = check_dependency('TableIO')
-
-if HAVE_TABLEIO:
-    import TableIO
 
 
 class FileHandler(object):
@@ -177,20 +173,17 @@ class StandardTextFile(FileHandler):
         """
         Load data from a text file and returns an array of the data
         """
-        if HAVE_TABLEIO:
-            data = numpy.fliplr(TableIO.readTableAsArray(self.filename, skipchar))
-        else:
-            myfile   = open(self.filename, "r", DEFAULT_BUFFER_SIZE)
-            contents = myfile.readlines()
-            myfile.close()
-            data   = []
-            header = True
-            idx    = 0
-            while header and idx < len(contents):
-                if contents[idx][0] != skipchar:
-                    header = False
-                    break
-                idx += 1
+        myfile   = open(self.filename, "r", DEFAULT_BUFFER_SIZE)
+        contents = myfile.readlines()
+        myfile.close()
+        data   = []
+        header = True
+        idx    = 0
+        while header and idx < len(contents):
+            if contents[idx][0] != skipchar:
+                header = False
+                break
+            idx += 1
             for i in xrange(idx, len(contents)):
                 line = contents[i].strip().split(sepchar)
                 id   = [float(line[-1])]
