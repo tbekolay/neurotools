@@ -2,24 +2,28 @@
 The ``io`` module
 =================
 
-This module will be the gateway of all the input/output relations in NeuroTools, especially regarding
-the inferface with pyNN. This is in that module that you'll have the Standard Formats currently
-supported by NeuroTools (text and pickle, hdf5 planned in a near future), and if you want to
-implement your own ``load`` function, reading your own particular data structure for the ``signals`` module,
-you should read the documentation
+This module will be the gateway of all the input/output relations in
+NeuroTools, especially regarding the inferface with pyNN. This is in
+that module that you'll have the Standard Formats currently supported
+by NeuroTools (text and pickle, hdf5 planned in a near future), and if
+you want to implement your own ``load`` function, reading your own
+particular data structure for the ``signals`` module, you should read
+the documentation
 
 -------------
 File Handlers
 -------------
 
-A File handler is an abstract object that will have to implement some key methods in order to be able
-to read and write NeuroTools objects from a file (given in the constructor). 
-The idea is that is you want to design your own File handler, you just have to implement 
-the abstract methods of the objects, i.e ``write()`` (to write an object to a file), 
-``read_spikes(params)`` read data and return a SpikeList object and 
-``read_analogs(params, type)``, read data and returns an analog signal according to type. To have a better
-understanding, just have a look to the two file handlers implemented in NeuroTools, i.e ``StandardTextFile`` and
-``StandPickleFile``.
+A File handler is an abstract object that will have to implement some
+key methods in order to be able to read and write NeuroTools objects
+from a file (given in the constructor). The idea is that is you want
+to design your own File handler, you just have to implement the
+abstract methods of the objects, i.e ``write()`` (to write an object
+to a file), ``read_spikes(params)`` read data and return a SpikeList
+object and ``read_analogs(params, type)``, read data and returns an
+analog signal according to type. To have a better understanding, just
+have a look to the two file handlers implemented in NeuroTools, i.e
+``StandardTextFile`` and ``StandPickleFile``.
 
 
 The ``StandardTextFile`` class
@@ -137,3 +141,12 @@ The ``DataHandler`` class
 -------------------------
 
 You should not have to deal directly with this class, because this is just an interface. See io.py for more details
+
+-------
+Autodoc
+-------
+
+.. automodule:: neurotools.io
+   :members:
+   :undoc-members:
+

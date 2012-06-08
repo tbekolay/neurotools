@@ -347,3 +347,13 @@ essentially infinite number of points to be generated::
 
 
 *This document was last updated for r274.*
+
+
+Autodoc
+-------
+
+.. automodule:: neurotools.parameters
+   :members:
+   :undoc-members:
+
+

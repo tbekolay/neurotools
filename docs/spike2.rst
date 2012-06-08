@@ -58,4 +58,11 @@ in case your vm channel contains multiple stimuli conditions that you dont want 
 
 For further examples of what to do with ``NeuroTools.signals`` objects, please refer to the documentation for the ``signals`` module.
 
+Autodoc
+-------
+
+.. automodule:: neurotools.spike2
+   :members:
+   :undoc-members:
+
 

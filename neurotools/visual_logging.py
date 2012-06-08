@@ -34,6 +34,12 @@ from datetime import datetime
 from logging import CRITICAL, DEBUG, ERROR, FATAL, INFO, WARN, WARNING, NOTSET
 from time import sleep
 
+
+if check_dependency('matplotlib'):
+    import matplotlib
+    matplotlib.use('Agg')
+
+
 if check_dependency('pylab'):
     import pylab
 

@@ -74,3 +74,12 @@ dynamically changing rates:
 This will generate a SpikeTrain object containing spike times with an 
 approximate rate of 50 Hz for one second, followed by 80 Hz for one second, and 
 finally 30 Hz for half a second. Note that t[0] is used as tstart.
+
+Autodoc
+-------
+
+.. automodule:: neurotools.stgen
+   :members:
+   :undoc-members:
+
+

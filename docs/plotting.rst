@@ -213,3 +213,12 @@ Finalising and Saving:
 ~~~~~~~~~~~~~~~~~~~~~~
 Once a SimpleMultiplot is ready to be saved, calling ``finalise()`` will turn off tick labels for all x-axes except the bottom one.
 The whole plot is saved to a filename and type of choice with the call ``save(filename)``.
+
+Autodoc
+-------
+
+.. automodule:: neurotools.plotting
+   :members:
+   :undoc-members:
+
+

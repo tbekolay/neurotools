@@ -16,13 +16,21 @@ concept of time to this).
 
 Hence, any object (which we call a 'component' in this context) must have
 the following attributes:
-  `parameters`: a `neurotools` `ParameterSet` object
-  `input`: another component or `None`; we assume a single
-input for now. A list of inputs should also be possible. We need to be wary
-of recurrent loops, in which two components both have each other as direct or
-indirect inputs).
-  `full_type`: the object class and module
-  `version`: the source-code version
+
+`parameters`
+  a `neurotools` `ParameterSet` object
+
+`input`
+  another component or `None`; we assume a single
+  input for now. A list of inputs should also be possible. We need to be wary
+  of recurrent loops, in which two components both have each other as direct or
+  indirect inputs).
+
+`full_type`
+  the object class and module
+
+`version`
+  the source-code version
 
 Classes
 -------

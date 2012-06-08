@@ -35,13 +35,14 @@ from neurotools import check_dependency, check_numpy_version
 from neurotools.io import *
 from neurotools.plotting import get_display, set_axis_limits, set_labels, SimpleMultiplot
 
-if check_dependency('psyco'):
-    import psyco
-    psyco.full()
-
 from neurotools import check_dependency
-HAVE_PYLAB = check_dependency('pylab')
+
 HAVE_MATPLOTLIB = check_dependency('matplotlib')
+if HAVE_MATPLOTLIB:
+    import matplotlib
+    matplotlib.use('Agg')
+
+HAVE_PYLAB = check_dependency('pylab')
 if HAVE_PYLAB:
     import pylab
 else:

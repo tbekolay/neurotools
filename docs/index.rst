@@ -18,8 +18,6 @@ Contents:
    signals
    spike2
    stgen
-   utilities
-   utilities.srblib
 
 Indices and tables
 ==================

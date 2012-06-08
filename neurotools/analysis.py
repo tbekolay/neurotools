@@ -1,4 +1,3 @@
-# -*- coding: utf8 -*-
 """
 neurotools.analysis
 ==================
@@ -28,8 +27,14 @@ import numpy
 
 from neurotools import check_dependency
 
-HAVE_PYLAB = check_dependency('pylab')
+
 HAVE_MATPLOTLIB = check_dependency('matplotlib')
+if HAVE_MATPLOTLIB:
+    import matplotlib
+    matplotlib.use('Agg')
+
+
+HAVE_PYLAB = check_dependency('pylab')
 if HAVE_PYLAB:
     import pylab
 else:

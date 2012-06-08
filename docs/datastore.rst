@@ -1,8 +1,8 @@
-======================
-The `datastore` module
-======================
+========================
+The ``datastore`` module
+========================
 
-The `datastore` module aims to present a consistent interface for persistent
+The ``datastore`` module aims to present a consistent interface for persistent
 data storage, irrespective of storage back-end. The main intended usage is for
 caching of intermediate results. If it takes a long computation time to
 calculate an object's data, it can save the data to a datastore the first time
@@ -21,23 +21,28 @@ concept of time to this).
 Hence, any object (which we call a 'component' in this context) must have
 the following attributes:
 
-  ``parameters``:  a NeuroTools ``ParameterSet`` object
-  ``input``:       another component or ``None``; we assume a single input for
-                   now. A list of inputs should also be possible. We need to be
-                   wary of recurrent loops, in which two components both have
-                   each other as direct or indirect inputs).
-  ``version``:     the source-code version
+``parameters``
+  a NeuroTools ``ParameterSet`` object
+
+``input``
+  another component or ``None``; we assume a single input for
+  now. A list of inputs should also be possible. We need to be wary of
+  recurrent loops, in which two components both have each other as
+  direct or indirect inputs).
+
+``version``
+  the source-code version
 
 There are two advantages to using the ``datastore`` module rather than just
 using, say, ``shelve`` directly::
 
-    1. You don't have to worry about keeping track of the key used to identify
-       your data in the store: the ``DataStore`` object takes care of this for
-       you.
-    2. You can use various different back-ends to store your data (local
-       filesystem, remote filesystem, database) and to manage the keys
-       (``shelve``, a database, the filesystem), and the interface remains the
-       same.
+1. You don't have to worry about keeping track of the key used to identify
+   your data in the store: the ``DataStore`` object takes care of this for
+   you.
+2. You can use various different back-ends to store your data (local
+   filesystem, remote filesystem, database) and to manage the keys
+   (``shelve``, a database, the filesystem), and the interface remains the
+   same.
     
   
 Creating a datastore
@@ -56,4 +61,11 @@ Here we specify that the ``shelve`` files will be created in ``/tmp``. Now let
 us create a simple component whose data we wish to store::
 
     >>> class SimpleComponent(object):
-    ...     def __init__(self, parameters, 
+    ...     def __init__(self, parameters,
+
+Autodoc
+~~~~~~~
+
+.. automodule:: neurotools.datastore
+   :members:
+   :undoc-members:

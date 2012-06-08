@@ -1,10 +1,5 @@
 from neurotools import check_dependency
 
-HAVE_INTERVAL = check_dependency('interval')
-
-if HAVE_INTERVAL:
-    from interval import *
-
 import numpy
 
 class Interval(object):
@@ -26,28 +21,12 @@ class Interval(object):
         Constructor of the Interval object.
 
         """
-        if HAVE_INTERVAL:
-            self.start_times = start_times
-            self.end_times   = end_times
-            # write the intervals to an interval object (pyinterval)
-            scalar_types = (int, float, numpy.float, numpy.float32, numpy.float64, numpy.int, numpy.int8,
-                            numpy.int16, numpy.int32, numpy.int64)
-            test = isinstance(start_times, scalar_types)
-            if test:
-                self.start_times = [self.start_times]
-            test = isinstance(end_times, scalar_types)
-            if test:
-                self.end_times = [self.end_times]
-            if len(self.start_times) != len(self.end_times) :
-                raise Exception("There sould be an equal number of starts and stops")
-            self.interval_data = interval(*numpy.transpose(numpy.array([start_times,end_times])))
-        else:
-            test = isinstance(start_times, int) or isinstance(start_times, float)
-            assert test, "Interval package not present, start_times should be a number !"
-            test = isinstance(end_times, int) or isinstance(end_times, float)
-            assert test, "Interval package not present, end_times should be a number !"
-            self.start_times = [start_times]
-            self.end_times   = [end_times]
+        test = isinstance(start_times, int) or isinstance(start_times, float)
+        assert test, "Interval package not present, start_times should be a number !"
+        test = isinstance(end_times, int) or isinstance(end_times, float)
+        assert test, "Interval package not present, end_times should be a number !"
+        self.start_times = [start_times]
+        self.end_times   = [end_times]
 
     def intersect(self, itv) :
         self.interval_data = self.interval_data & itv.interval_data
@@ -75,16 +54,10 @@ class Interval(object):
         return (bounds[0][0],bounds[-1][0])
     
     def t_start(self):
-        if HAVE_INTERVAL:
-            return self.interval_data.extrema[0][0]
-        else:
-            return self.start_times[0]
+        return self.start_times[0]
     
     def t_stop(self):
-        if HAVE_INTERVAL:
-            return self.interval_data.extrema[-1][0]
-        else:
-            return self.end_times[0]
+        return self.end_times[0]
     
     def copy(self):
         """
@@ -138,11 +111,7 @@ class Interval(object):
 
     def slice_times(self, times):
         spikes_selector = numpy.zeros(len(times), dtype=numpy.bool)
-        if HAVE_INTERVAL:
-            for itv in self.interval_data :
-                spikes_selector = spikes_selector + (times > itv[0])*(times <= itv[1])
-        else:
-            spikes_selector = (times >= self.t_start()) & (times <= self.t_stop())
+        spikes_selector = (times >= self.t_start()) & (times <= self.t_stop())
         return numpy.extract(spikes_selector, times)
 
 

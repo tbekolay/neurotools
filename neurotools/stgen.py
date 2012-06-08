@@ -9,7 +9,7 @@ Classes
 -------
 
 StGen - Object to generate stochastic processes of various kinds
-        and return them as SpikeTrain or AnalogSignal objects.
+and return them as SpikeTrain or AnalogSignal objects.
 
 
 Functions
@@ -132,8 +132,8 @@ class StGen:
 
         Inputs:
             rng - The random number generator state object (optional). Can be None, or 
-                  a numpy.random.RandomState object, or an object with the same 
-                  interface.
+            a numpy.random.RandomState object, or an object with the same 
+            interface.
 
             seed - A seed for the rng (optional).
 
@@ -156,7 +156,7 @@ class StGen:
         inh_gamma_generator - inhomogeneous Gamma process (time varying a,b)
         inh_adaptingmarkov_generator - inhomogeneous adapting markov process (time varying)
         inh_2Dadaptingmarkov_generator - inhomogeneous adapting and 
-                                         refractory markov process (time varying)
+        refractory markov process (time varying)
 
         Continuous time processes:
         --------------------------
@@ -196,7 +196,7 @@ class StGen:
             t_start - the beginning of the SpikeTrain (in ms)
             t_stop  - the end of the SpikeTrain (in ms)
             array   - if True, a numpy array of sorted spikes is returned,
-                      rather than a SpikeTrain object.
+            rather than a SpikeTrain object.
 
         Examples:
             >> gen.poisson_generator(50, 0, 1000)
@@ -268,7 +268,7 @@ class StGen:
             t_start - the beginning of the SpikeTrain (in ms)
             t_stop  - the end of the SpikeTrain (in ms)
             array   - if True, a numpy array of sorted spikes is returned,
-                      rather than a SpikeTrain object.
+            rather than a SpikeTrain object.
 
         Examples:
             >> gen.gamma_generator(10, 1/10., 0, 1000)
@@ -334,12 +334,12 @@ class StGen:
 
         Inputs:
             rate   - an array of the rates (Hz) where rate[i] is active on interval 
-                     [t[i],t[i+1]]
+            [t[i],t[i+1]]
             t      - an array specifying the time bins (in milliseconds) at which to 
-                     specify the rate
+            specify the rate
             t_stop - length of time to simulate process (in ms)
             array  - if True, a numpy array of sorted spikes is returned,
-                     rather than a SpikeList object.
+            rather than a SpikeList object.
 
         Note:
             t_start=t[0]
@@ -400,12 +400,12 @@ class StGen:
 
         Inputs:
             a,b    - arrays of the parameters of the gamma PDF where a[i] and b[i] 
-                     will be active on interval [t[i],t[i+1]]
+            will be active on interval [t[i],t[i+1]]
             t      - an array specifying the time bins (in milliseconds) at which to 
-                     specify the rate
+            specify the rate
             t_stop - length of time to simulate process (in ms)
             array  - if True, a numpy array of sorted spikes is returned,
-                     rather than a SpikeList object.
+            rather than a SpikeList object.
 
         Note: 
             t_start=t[0]
@@ -491,12 +491,12 @@ class StGen:
 
         Inputs:
             a,b    - arrays of the parameters of the gamma PDF where a[i] and b[i] 
-                     will be active on interval [t[i],t[i+1]]
+            will be active on interval [t[i],t[i+1]]
             t      - an array specifying the time bins (in milliseconds) at which to 
-                     specify the rate
+            specify the rate
             t_stop - length of time to simulate process (in ms)
             array  - if True, a numpy array of sorted spikes is returned,
-                     rather than a SpikeList object.
+            rather than a SpikeList object.
 
         Note: 
             t_start=t[0]
@@ -543,13 +543,13 @@ class StGen:
 
         Inputs:
             a,bq    - arrays of the parameters of the hazard function where a[i] and bq[i] 
-                     will be active on interval [t[i],t[i+1]]
+            will be active on interval [t[i],t[i+1]]
             tau    - the time constant of adaptation (in milliseconds).
             t      - an array specifying the time bins (in milliseconds) at which to 
-                     specify the rate
+            specify the rate
             t_stop - length of time to simulate process (in ms)
             array  - if True, a numpy array of sorted spikes is returned,
-                     rather than a SpikeList object.
+            rather than a SpikeList object.
 
         Note: 
             - t_start=t[0]
@@ -662,16 +662,16 @@ class StGen:
 
         Inputs:
             a,bq    - arrays of the parameters of the hazard function where a[i] and bq[i] 
-                     will be active on interval [t[i],t[i+1]]
+            will be active on interval [t[i],t[i+1]]
             tau_s    - the time constant of adaptation (in milliseconds).
             tau_r    - the time constant of refractoriness (in milliseconds).
             qrqs     - the ratio of refractoriness conductance to adaptation conductance.
-                       typically on the order of 200.
+            typically on the order of 200.
             t      - an array specifying the time bins (in milliseconds) at which to 
-                     specify the rate
+            specify the rate
             t_stop - length of time to simulate process (in ms)
             array  - if True, a numpy array of sorted spikes is returned,
-                     rather than a SpikeList object.
+            rather than a SpikeList object.
 
         Note: 
             - t_start=t[0]
@@ -793,8 +793,8 @@ class StGen:
             t_start - start time in milliseconds
             t_stop  - end time in milliseconds
             array   - if True, the functions returns the tuple (y,t) 
-                      where y and t are the OU signal and the time bins, respectively,
-                      and are both numpy arrays.
+            where y and t are the OU signal and the time bins, respectively,
+            and are both numpy arrays.
         
         Examples:
             >> stgen.OU_generator(0.1, 2, 3, 0, 0, 10000)
@@ -847,8 +847,8 @@ class StGen:
             t_start - start time in milliseconds
             t_stop  - end time in milliseconds
             array   - if True, the functions returns the tuple (y,t) 
-                      where y and t are the OU signal and the time bins, respectively,
-                      and are both numpy arrays.
+            where y and t are the OU signal and the time bins, respectively,
+            and are both numpy arrays.
         
         Examples:
             >> stgen.OU_generator(0.1, 2, 3, 0, 0, 10000)
@@ -904,8 +904,8 @@ class StGen:
             t_start - start time in milliseconds
             t_stop  - end time in milliseconds
             array   - if True, the functions returns the tuple (y,t) 
-                      where y and t are the OU signal and the time bins, respectively,
-                      and are both numpy arrays.
+            where y and t are the OU signal and the time bins, respectively,
+            and are both numpy arrays.
         
         Examples:
             >> stgen.OU_generator_weave1(0.1, 2, 3, 0, 0, 10000)
@@ -983,9 +983,9 @@ def shotnoise_fromspikes(spike_train,q,tau,dt=0.1,t_start=None, t_stop=None,arra
       tau - the shot decay time constant in milliseconds
       dt - the resolution of the resulting shotnoise in milliseconds
       t_start - start time of the resulting AnalogSignal
-                If unspecified, t_start of spike_train is used
+      If unspecified, t_start of spike_train is used
       t_stop  - stop time of the resulting AnalogSignal
-                If unspecified, t_stop of spike_train is used
+      If unspecified, t_stop of spike_train is used
       array - if True, returns (shotnoise,t) as numpy arrays, otherwise an AnalogSignal.
       eps - a numerical parameter indicating at what value of 
       the shot kernal the tail is cut.  The default is usually fine.
