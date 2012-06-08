@@ -2,6 +2,9 @@
 Unit tests for the neurotools.signals module
 """
 
+import matplotlib
+matplotlib.use('Agg')
+
 from neurotools import io
 import neurotools.signals.analogs as analogs
 

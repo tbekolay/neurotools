@@ -37,10 +37,6 @@ DjangoORMDataStore - Persistent data store using the Django ORM
 """
 
 import warnings
-from neurotools import check_dependency
-
-if check_dependency("django"):
-    from django_orm import DjangoORMDataStore
 
 from shelve_ds import ShelveDataStore
 

@@ -3,7 +3,7 @@
 from distutils.core import setup
 
 setup(
-    name = "NeuroTools",
+    name = "neurotools",
     version = "0.2.0dev",
     package_dir={'neurotools': 'neurotools'},
     packages = ['neurotools',

@@ -1,6 +1,8 @@
 """
 Unit tests for the neurotools.plotting module
 """
+import matplotlib
+matplotlib.use('Agg')
 
 import unittest
 from neurotools import plotting
@@ -18,7 +20,7 @@ class PylabParamsTest(unittest.TestCase):
         ratio = 0.1234
         text_fontsize = 10 
         tick_labelsize = 8
-        useTex = True
+        useTex = False
 
         inches_per_pt = 1.0/72.27               # Convert pt to inch
         fig_width = fig_width_pt*inches_per_pt  # width in inches
