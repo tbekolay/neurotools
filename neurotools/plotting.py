@@ -31,12 +31,14 @@ from neurotools import check_dependency
 
 
 # Check availability of pylab (essential!)
-if check_dependency('pylab'):
-    import pylab
 if check_dependency('matplotlib'):
+    from matplotlib import use
+    use('Agg')
     from matplotlib.figure import Figure
     from matplotlib.lines import Line2D
     from matplotlib.backends.backend_agg import FigureCanvasAgg as FigureCanvas
+if check_dependency('pylab'):
+    import pylab
 
 # Check availability of PIL
 PILIMAGEUSE = check_dependency('PIL')

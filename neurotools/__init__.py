@@ -21,8 +21,7 @@ spike2     - offers an easy way for reading data from CED's Spike2 Son files.
 parameters - contains classes for managing large, hierarchical parameter sets. 
 analysis   - cross-correlation, tuning curves, frequency spectrum, etc.
 stgen      - various stochastic process generators relevant for Neuroscience 
-             (OU, poisson, inhomogenous gamma, ...). 
-utilities  - miscellaneous stuff, like SRB access.
+             (OU, poisson, inhomogenous gamma, ...).
 io         - neurotools support for reading and writing of files in various formats. 
 plotting   - routines for plotting and visualization.
 datastore  - a consistent interface for persistent data storage (e.g. for caching intermediate results).
@@ -35,8 +34,9 @@ sub-package, and requesting help on it:
 >>> help(neurotools.signals)
 """
 
-__all__ = ['analysis', 'parameters', 'plotting', 'signals', 'stgen', 'io', 'datastore', 'utilities', 'spike2', 'random', 'optimize', 'tisean']
-__version__ = "0.1.0 (Asynchronous Astrocyte)"
+__all__ = ['analysis', 'parameters', 'plotting', 'signals', 'stgen',
+           'io', 'datastore', 'spike2', 'random', 'optimize', 'tisean']
+__version__ = "0.2.1 (Asynchronous Astrocyte)"
 import warnings
 import platform
 from operator import __or__
@@ -51,26 +51,13 @@ from operator import __or__
 dependencies = {'pylab' : {'website' : 'http://matplotlib.sourceforge.net/', 'is_present' : False, 'check':False},
                 'matplotlib': {'website' : 'http://matplotlib.sourceforge.net/', 'is_present' : False, 'check':False},
                 'tables': {'website' : 'http://www.pytables.org/moin' , 'is_present' : False, 'check':False},
-                'psyco' : {'website' : 'http://psyco.sourceforge.net/', 'is_present' : False, 'check':False},
-                'pygsl' : {'website' : 'http://pygsl.sourceforge.net/', 'is_present' : False, 'check':False},
                 'PIL'   : {'website' : 'http://www.pythonware.com/products/pil/', 'is_present':False, 'check':False},
                 'scipy' : {'website' : 'http://numpy.scipy.org/' , 'is_present' : False, 'check':False},
-                'neurotools.facets.hdf5' : {'website' : None, 'is_present' : False, 'check':False},
-                'srblib'  : {'website' : 'http://www.sdsc.edu/srb/index.php/Python', 'is_present' : False, 'check':False},
                 'rpy'     : {'website' : 'http://rpy.sourceforge.net/', 'is_present' : False, 'check':False},
                 'rpy2'     : {'website' : 'http://rpy.sourceforge.net/rpy2.html', 'is_present' : False, 'check':False},
-
-                'django'  : {'website': 'http://www.djangoproject.com', 'is_present': False, 'check': False},
                 'IPython' : {'website': 'http://ipython.scipy.org/', 'is_present': False, 'check': False},
-                'interval': {'website': 'http://pypi.python.org/pypi/interval/1.0.0', 'is_present': False, 'check': False},
-                'TableIO' : {'website': 'http://kochanski.org/gpk/misc/TableIO.html', 'is_present': False, 'check': False},
                 ## Add here your extensions ###
                }
-
-
-# Don't raise warnings for psyco on non-32bit systems
-if platform.machine() != 'i386':
-    dependencies['psyco']['check']=True
 
 #########################################################
 ## Function to display error messages on the dependencies

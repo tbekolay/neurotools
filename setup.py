@@ -4,7 +4,7 @@ from distutils.core import setup
 
 setup(
     name = "neurotools",
-    version = "0.2.0dev",
+    version = "0.2.1dev",
     package_dir={'neurotools': 'neurotools'},
     packages = ['neurotools',
                 'neurotools.tisean',
