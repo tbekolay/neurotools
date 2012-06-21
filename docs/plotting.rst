@@ -1,4 +1,3 @@
-=======================
 The ``plotting`` module
 =======================
 
@@ -6,13 +5,10 @@ This module contains a collection of tools for plotting and image processing tha
 facilitate the generation and handling of your data visualizations.
 It utilizes the Matplotlib and the Python Imaging Library (PIL) packages.
 
-
----------------------------------------------------------
 Universal Functions and Classes for Normal Matplotlib Use
 ---------------------------------------------------------
 
 The following functions might be useful for every user of the Matplotlib package.
-
 
 The function ``get_display(display)``
 -------------------------------------
@@ -24,8 +20,6 @@ Arguments:
 Returns:
 ~~~~~~~~
 A pylab object with a plot() function to draw the plots.
-
-
 
 The function ``progress_bar(progress)``
 ---------------------------------------
@@ -43,8 +37,6 @@ Example of usage::
     >>> progress_bar(0.7)
     |===================================               |
 
-
-
 The function ``pylab_params(fig_width_pt, ratio, text_fontsize, tick_labelsize, useTex)``
 -----------------------------------------------------------------------------------------
 
@@ -60,8 +52,6 @@ Returns:
 ~~~~~~~~
 A dictionary with a set of parameters that help to nicely format figures. 
 The return object can be used to update the pylab run command parameters dictionary 'pylab.rcParams'.
-
-
 
 The function ``set_axis_limits(subplot, xmin, xmax, ymin, ymax)``
 -----------------------------------------------------------------
@@ -84,9 +74,6 @@ Example of usage::
     >>> pylab.plot(x,y)
     >>> plotting.set_axis_limits(pylab, 0., 10., 0., 100.)
 
-
-
-
 The function ``set_labels(subplot, xlabel, ylabel)``
 ----------------------------------------------------
 
@@ -108,8 +95,6 @@ Example of usage::
     >>> pylab.plot(x,y)
     >>> plotting.set_labels(pylab, 'x', 'y=x^2')
 
-
-
 The function ``set_pylab_params(fig_width_pt, ratio, text_fontsize, tick_labelsize, useTex)``
 ---------------------------------------------------------------------------------------------
 
@@ -125,13 +110,8 @@ Does:
 ~~~~~
 Updates a set of parameters within the the pylab run command parameters dictionary 'pylab.rcParams' in order to achieve nicely formatted figures.
 
-
-
-----------------------------------------------------------------
 Special Plotting Functions and Classes for Specific Requirements
 ----------------------------------------------------------------
-
-
 
 The function ``save_2D_image(mat, filename)``
 ---------------------------------------------
@@ -150,8 +130,6 @@ Example of usage::
     >>> import numpy
     >>> a = numpy.random.random([100,100]) # creates a 2D numpy array with random values between 0. and 1.
     >>> save_2D_image(a,'randomarray100x100.png')
-
-
 
 The function ``save_2D_movie(frame_list, filename, frame_duration)``
 --------------------------------------------------------------------
@@ -173,12 +151,9 @@ Example of usage::
     >>> for i in range(100): framelist.append(numpy.random.random([100,100])) # creates a list of 2D numpy arrays with random values between 0. and 1.
     >>> save_2D_movie(framelist, 'randommovie100x100x100.zip', 0.1)
 
-
-
 The ``SimpleMultiplot`` class
 -----------------------------
 This class creates a figure consisting of multiple panels, all with the same datatype and the same x-range.
-
 
 Creation / Constructor Arguments:
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -220,5 +195,4 @@ Autodoc
 .. automodule:: neurotools.plotting
    :members:
    :undoc-members:
-
 

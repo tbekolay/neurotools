@@ -1,8 +1,9 @@
 """
 neurotools.analysis
-==================
+===================
 
-A collection of analysis functions that may be used by neurotools.signals or other packages.
+A collection of analysis functions that may be used by neurotools.signals or
+other packages.
 
 Classes
 -------
@@ -15,13 +16,11 @@ Functions
 
 ccf                       - fast cross correlation function based on fft
 crosscorrelate            - cross-correlation between two series of discrete
-                            events (e.g. spikes)
+events (e.g. spikes)
 simple_frequency_spectrum - Simple frequencxy spectrum
 arrays_almost_equal       - comparison of two arrays
 make_kernel               - creates kernel functions for convolution
 """
-
-import os
 
 import numpy
 
@@ -46,19 +45,20 @@ if not HAVE_MATPLOTLIB:
 def arrays_almost_equal(a, b, threshold):
     return (abs(a-b) < threshold).all()
 
+
 def ccf(x, y, axis=None):
     """
     Computes the cross-correlation function of two series x and y.
     Note that the computations are performed on anomalies (deviations from
     average).
     Returns the values of the cross-correlation at different lags.
-        
+
     Inputs:
         x    - 1D MaskedArray of a Time series.
         y    - 1D MaskedArray of a Time series.
-        axis - integer *[None]* Axis along which to compute (0 for rows, 1 for cols).
-               If `None`, the array is flattened first.
-    
+        axis - integer *[None]* Axis along which to compute (0 for rows,
+        1 for cols). If `None`, the array is flattened first.
+
     Examples:
         >> z= arange(1000)
         >> ccf(z,z)
@@ -108,65 +108,65 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
     """
     Calculates the cross-correlation between two vectors containing event times.
     Returns (int, int_, norm). See below for details.
-    
+
     Adapted from original script written by Martin P. Nawrot for the FIND MATLAB
     toolbox.
     See FIND - a unified framework for neural data analysis,
         Meier R, Egert U, Aertsen A, Nawrot MP; Neural Netw. 2008 Oct;
-        21(8):1085-93. 
-     
+        21(8):1085-93.
+
     Inputs:
         sua1      - array of event times. Can be either a column/row vector or a
-                    member of the SpikeTrain class.
+        member of the SpikeTrain class.
         sua2      - array of event times. Can be either a column/row vector or a
-                    member of the SpikeTrain class.
-                    If sua2 == sua1 the result is the
-                    autocorrelogram.
+        member of the SpikeTrain class.
+        If sua2 == sua1 the result is the
+        autocorrelogram.
         lag       - the max. lag for which relative event timing is considered
-                    with a max. difference of +/- lag. A default lag is computed
-                    from the inter-event interval of the longer of the two sua
-                    arrays 
+        with a max. difference of +/- lag. A default lag is computed
+        from the inter-event interval of the longer of the two sua
+        arrays
         n_pred    - number of surrogate compilations for the predictor. This
-                    influences the total length of the predictor output array
-                    int_
+        influences the total length of the predictor output array
+        int_
         predictor - string array determines the type of bootstrap predictor to
-                    be used:
-                        shuffle - shuffles inter-event intervals of the longer
-                                  input array and calculates relative
-                                  differences with the shorter input array.
-                                  n_pred determines the number of repeated
-                                  shufflings, resulting differences are pooled
-                                  from all repeated shufflings
+        be used:
+            shuffle - shuffles inter-event intervals of the longer
+            input array and calculates relative
+            differences with the shorter input array.
+            n_pred determines the number of repeated
+            shufflings, resulting differences are pooled
+            from all repeated shufflings
         display   - if True the corresponding plots will be displayed. If False,
-                    int, int_ and norm will be returned.
-                    when display = True and n_pred > 1, the averaged predictor
-                    will be plotted.
+        int, int_ and norm will be returned.
+        when display = True and n_pred > 1, the averaged predictor
+        will be plotted.
         kwargs    - arguments to be passed to numpy.histogram.
 
     Outputs:
         int  - accumulated differences of events in sua1 minus the events in
-               sua2. Thus positive values of int relate to events of sua2 that
-               lead events of sua1. Units are the same as the input arrays.
+        sua2. Thus positive values of int relate to events of sua2 that
+        lead events of sua1. Units are the same as the input arrays.
         int_ - predictor: accumulated differences based on the prediction
-               method. The length of int_ is n_pred * length(int).  Units are
-               the same as the input arrays.
+        method. The length of int_ is n_pred * length(int).  Units are
+        the same as the input arrays.
         norm - normalization factor used to scale the bin heights in int and
-               int_. int/norm and int_/norm correspond to the linear
-               correlation coefficient.
-    
+        int_. int/norm and int_/norm correspond to the linear
+        correlation coefficient.
+
     Examples:
         >> crosscorrelate(numpy_array1, numpy_array2)
         >> crosscorrelate(spike_train1, spike_train2)
         >> crosscorrelate(spike_train1, spike_train2, lag = 150.0)
         >> crosscorrelate(spike_train1, spike_train2, display=True,
                           kwargs={'bins':100})
-            
+
     See also:
         ccf
-    """    
+    """
     assert predictor is 'shuffle' or predictor is None, "predictor must be \
     either None or 'shuffle'. Other predictors are not yet implemented."
-    
+
     #Check whether sua1 and sua2 are SpikeTrains or arrays
     sua = []
     for x in (sua1, sua2):
@@ -182,7 +182,7 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
                             "SpikeTrain class or column/row vectors")
     sua1 = sua[0]
     sua2 = sua[1]
-    
+
     if sua1.size < sua2.size:
         if lag is None:
             lag = numpy.ceil(10*numpy.mean(numpy.diff(sua1)))
@@ -192,17 +192,17 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
             lag = numpy.ceil(20*numpy.mean(numpy.diff(sua2)))
         sua1, sua2 = sua2, sua1
         reverse = True
-            
+
     #construct predictor
     if predictor is 'shuffle':
         isi = numpy.diff(sua2)
         sua2_ = numpy.array([])
         for ni in xrange(1,n_pred+1):
-            idx = numpy.random.permutation(isi.size-1)            
+            idx = numpy.random.permutation(isi.size-1)
             sua2_ = numpy.append(sua2_, numpy.add(numpy.insert(
                 (numpy.cumsum(isi[idx])), 0, 0), sua2.min() + (
                 numpy.random.exponential(isi.mean()))))
-            
+
     #calculate cross differences in spike times
     int = numpy.array([])
     int_ = numpy.array([])
@@ -216,10 +216,10 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
     if reverse is True:
         int = -int
         int_ = -int_
-        
+
     norm = numpy.sqrt(sua1.size * sua2.size)
-    
-    # Plot the results if display=True   
+
+    # Plot the results if display=True
     if display:
         subplot = get_display(display)
         if not subplot or not HAVE_PYLAB:
@@ -238,7 +238,7 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
                 if predictor is None:
                     set_labels(subplot, xlabel, ylabel)
                     pylab.draw()
-                elif predictor is 'shuffle':            
+                elif predictor is 'shuffle':
                     # Plot the predictor
                     norm_ = norm * n_pred
                     counts_, bin_edges_ = numpy.histogram(int_, **kwargs)
@@ -251,7 +251,7 @@ def crosscorrelate(sua1, sua2, lag=None, n_pred=1, predictor=None,
                 " window of %s" % lag
     else:
         return int, int_, norm
-    
+
 def _dict_max(D):
     """
     For a dict containing numerical values, contain the key for the
@@ -263,27 +263,27 @@ def _dict_max(D):
     for k in D:
         if D[k] == max_val:
             return k
-        
+
 def make_kernel(form, sigma, time_stamp_resolution, direction=1):
     """
     Constructs a numeric linear convolution kernel of basic shape to be used
     for data smoothing (linear low pass filtering) and firing rate estimation
     from single trial or trial-averaged spike trains.
-    
+
     Exponential and alpha kernels may also be used to represent postynaptic
     currents / potentials in a linear (current-based) model.
-    
+
     Adapted from original script written by Martin P. Nawrot for the FIND MATLAB
     toolbox.
     See FIND - a unified framework for neural data analysis,
         Meier R, Egert U, Aertsen A, Nawrot MP; Neural Netw. 2008 Oct;
-        21(8):1085-93. 
-        
+        21(8):1085-93.
+
         Nawrot M, Aertsen A, Rotter S (1999)
         Single-trial estimation of neuronal firing rates - From single neuron
         spike trains to population activity.
         J Neurosci Meth 94: 81-92
-        
+
     Inputs:
         form                  - kernel form (string) Currently implemented forms
                                 are BOX - boxcar, TRI - triangle, GAU - gaussian
@@ -304,7 +304,7 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
                                 definition here is that for direction = 1 the
                                 kernel represents the impulse response function
                                 of the linear filter. Default value is 1.
-    
+
     Outputs:
         kernel  - array of kernel. The length of this array is always an odd
                   number to represent symmetric kernels such that the center bin
@@ -319,35 +319,35 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
                   Use: rate = norm * scipy.signal.lfilter(kernel, 1, spike_data)
         m_idx   - index of the numerically determined median (center of gravity)
                   of the kernel function
-                  
+
     Further comments:
-    
+
     Assume matrix X of n spike trains represented as binary vector (0/1).
-    
+
     To obtain single trial rate function of trial one should use
         r = norm * scipy.signal.fftconvolve(sua, kernel)
     To obtain trial-averaged spike train one should use
         r_avg = norm * scipy.signal.fftconvolve(sua, numpy.mean(X,1))
-        
+
         where X is an array of shape (l,n), where n is the number of trials and
         l the length of each trial
-    
+
     Note that the output of scipy.signal.fftconvolve needs to trimmed acordingly
     before being displayed. For more information see the source of the method
     SpikeTrain.instantaneous_rate()
-    
+
     See also:
         SpikeTrain.instantaneous_rate, SpikeList.averaged_instantaneous_rate
     """
     assert form.upper() in ('BOX','TRI','GAU','EPA','EXP','ALP'), "form must \
     be one of either 'BOX','TRI','GAU','EPA','EXP' or 'ALP'!"
-    
+
     assert direction in (1,-1), "direction must be either 1 or -1"
-    
+
     sigma = sigma / 1000. #convert to SI units
-    
+
     time_stamp_resolution = time_stamp_resolution / 1000. #convert to SI units
-    
+
     norm = 1./time_stamp_resolution
 
     if form.upper() == 'BOX':
@@ -355,7 +355,7 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
         width = 2 * numpy.floor(w / 2.0 / time_stamp_resolution) + 1  # always odd number of bins
         height = 1. / width
         kernel = numpy.ones((1, width)) * height  # area = 1
-        
+
     elif form.upper() == 'TRI':
         w = 2 * sigma * numpy.sqrt(6)
         halfwidth = numpy.floor(w / 2.0 / time_stamp_resolution)
@@ -363,7 +363,7 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
         triright = numpy.arange(halfwidth, 0, -1)  # odd number of bins
         triangle = numpy.append(trileft, triright)
         kernel = triangle / triangle.sum()  # area = 1
-        
+
     elif form.upper() == 'EPA':
         w = 2.0 * sigma * numpy.sqrt(5)
         halfwidth = numpy.floor(w / 2.0 / time_stamp_resolution)
@@ -371,17 +371,17 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
         parabula = base**2
         epanech = parabula.max() - parabula  # inverse parabula
         kernel = epanech / epanech.sum()  # area = 1
-        
+
     elif form.upper() == 'GAU':
         SI_sigma = sigma / 1000.0
         w = 2.0 * sigma * 2.7  # > 99% of distribution weight
-        halfwidth = numpy.floor(w / 2.0 / time_stamp_resolution)  # always odd 
+        halfwidth = numpy.floor(w / 2.0 / time_stamp_resolution)  # always odd
         base = numpy.arange(-halfwidth, halfwidth + 1) / 1000.0 * (
             time_stamp_resolution)
         g = numpy.exp(-(base**2) / 2.0 / SI_sigma**2) / SI_sigma / numpy.sqrt(
             2.0 * numpy.pi)
         kernel = g / g.sum()
-        
+
     elif form.upper() == 'ALP':
         SI_sigma = sigma / 1000.0
         w = 5.0 * sigma
@@ -393,7 +393,7 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
         kernel = alpha / alpha.sum()  # normalization
         if direction == -1:
             kernel = numpy.flipud(kernel)
-            
+
     elif form.upper() == 'EXP':
         SI_sigma = sigma / 1000.0
         w = 5.0 * sigma
@@ -403,10 +403,10 @@ def make_kernel(form, sigma, time_stamp_resolution, direction=1):
         kernel = expo / expo.sum()
         if direction == -1:
             kernel = numpy.flipud(kernel)
-    
+
     kernel = kernel.ravel()
     m_idx = numpy.nonzero(kernel.cumsum() >= 0.5)[0].min()
-    
+
     return kernel, norm, m_idx
 
 def simple_frequency_spectrum(x):
@@ -450,7 +450,7 @@ class TuningCurve(object):
         for k,v in self._tuning_curves[k].items():
             D[k] = v[i]
         return D
-    
+
     def __repr__(self):
         return "TuningCurve: %s" % self._tuning_curves
 

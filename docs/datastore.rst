@@ -1,4 +1,3 @@
-========================
 The ``datastore`` module
 ========================
 
@@ -43,10 +42,9 @@ using, say, ``shelve`` directly::
    filesystem, remote filesystem, database) and to manage the keys
    (``shelve``, a database, the filesystem), and the interface remains the
    same.
-    
-  
+
 Creating a datastore
-~~~~~~~~~~~~~~~~~~~~
+--------------------
 
 Two different storage backends are currently available, ``ShelveDataStore`` and
 ``DjangoORMDataStore``, and more will be added in future. It is also intended to
@@ -64,7 +62,7 @@ us create a simple component whose data we wish to store::
     ...     def __init__(self, parameters,
 
 Autodoc
-~~~~~~~
+-------
 
 .. automodule:: neurotools.datastore
    :members:

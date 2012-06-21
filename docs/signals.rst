@@ -1,4 +1,3 @@
-======================
 The ``signals`` module
 ======================
 
@@ -7,7 +6,6 @@ on data structures like spike trains, spike lists, analog signals.
 
 The import and export of these data structures is typically achieved using the NeuroTools `io` module.
 
-------------
 Spike Trains
 ------------
 

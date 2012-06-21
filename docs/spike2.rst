@@ -1,4 +1,3 @@
-=========================
 The ``spike2`` module
 =========================
 
@@ -15,8 +14,7 @@ The main interaction with with Spike2 files is provided by the SON Library which
 The ``spike2`` module integrates the SON library such that the loading function directly returns ``NeuroTools.signals`` objects.
 This makes it very easy to apply certain analysis routines on simulated and real experimental data.
 
-----------------
-loading channels
+Loading channels
 ----------------
 
 Usually SON files contain data from multiple channels. The channels can contain analog signals, like membrane potential traces or discrete data like markers. The ``spike2`` module knows which type of channel you are loading and thus returns the appropriate ``NeuroTools.signals`` object.

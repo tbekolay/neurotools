@@ -1,11 +1,9 @@
-====================
 The ``stgen`` module
 ====================
 
 This module offers various stochastic generators for point processes that can
 be used as spike trains. 
 
----------------
 The StGen class
 ---------------
 
@@ -40,7 +38,6 @@ object has already been created:
 
     >>> st_gen.seed(7654321)
     
-
 Poisson-distributed point processes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
