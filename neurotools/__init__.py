@@ -3,43 +3,56 @@
 neurotools
 ==========
 
-neurotools is not a neural simulator, but a collection of tools
-to support all tasks associated with a neural simulation project which
-are not handled by the simulation engine.
+neurotools is a collection of tools for
+representing and anlyzing neuroscientific data.
 
-For more information see:
-http://neuralensemble.org/neurotools
-
+neurotools is designed to support all tasks
+associated with a neural simulation project
+which are not handled by the simulation engine.
+For more information see the complete documentation
+at http://neurotools.readthedocs.org/
 
 Available subpackages
 ---------------------
 
-neurotools functionality is modularized as follows: 
+signals
+    Provides core classes for manipulation of spike trains and analog signals.
+spike2
+    Offers an easy way for reading data from CED's Spike2 Son files.
+parameters
+    Contains classes for managing large, hierarchical parameter sets.
+analysis
+    Cross-correlation, tuning curves, frequency spectrum, etc.
+stgen
+    Various stochastic process generators relevant for Neuroscience
+    (OU, poisson, inhomogenous gamma, ...).
+io
+    Neurotools support for reading and writing of files in various formats.
+plotting
+    Routines for plotting and visualization.
+datastore
+    A consistent interface for persistent data storage
+    (e.g. for caching intermediate results).
 
-signals    - provides core classes for manipulation of spike trains and analog signals. 
-spike2     - offers an easy way for reading data from CED's Spike2 Son files. 
-parameters - contains classes for managing large, hierarchical parameter sets. 
-analysis   - cross-correlation, tuning curves, frequency spectrum, etc.
-stgen      - various stochastic process generators relevant for Neuroscience 
-             (OU, poisson, inhomogenous gamma, ...).
-io         - neurotools support for reading and writing of files in various formats. 
-plotting   - routines for plotting and visualization.
-datastore  - a consistent interface for persistent data storage (e.g. for caching intermediate results).
-random     - a set of classes representing statistical distributions
+Subpackage specific documentation is available by importing the
+subpackage, and requesting help on it::
 
-Sub-package specific documentation is available by importing the
-sub-package, and requesting help on it:
+  >>> import neurotools.signals
+  >>> help(neurotools.signals)
+  ... # doctest: +SKIP
 
->>> import neurotools.signals
->>> help(neurotools.signals)
+Utilities
+---------
+neurotools contains some fancy logging and dependency checking mechamisms,
+at least for now (might remove them soon).
+
 """
 
 __all__ = ['analysis', 'parameters', 'plotting', 'signals', 'stgen',
-           'io', 'datastore', 'spike2', 'random', 'optimize', 'tisean']
-__version__ = "0.2.1 (Asynchronous Astrocyte)"
+           'io', 'datastore', 'spike2', 'tisean']
+__version__ = "0.3.0"
 import warnings
-import platform
-from operator import __or__
+
 
 #########################################################
 ## ALL DEPENDENCIES SHOULD BE GATHERED HERE FOR CLARITY
@@ -48,14 +61,22 @@ from operator import __or__
 # The nice thing would be to gather every non standard
 # dependency here, in order to centralize the warning
 # messages and the check
-dependencies = {'pylab' : {'website' : 'http://matplotlib.sourceforge.net/', 'is_present' : False, 'check':False},
-                'matplotlib': {'website' : 'http://matplotlib.sourceforge.net/', 'is_present' : False, 'check':False},
-                'tables': {'website' : 'http://www.pytables.org/moin' , 'is_present' : False, 'check':False},
-                'PIL'   : {'website' : 'http://www.pythonware.com/products/pil/', 'is_present':False, 'check':False},
-                'scipy' : {'website' : 'http://numpy.scipy.org/' , 'is_present' : False, 'check':False},
-                'rpy'     : {'website' : 'http://rpy.sourceforge.net/', 'is_present' : False, 'check':False},
-                'rpy2'     : {'website' : 'http://rpy.sourceforge.net/rpy2.html', 'is_present' : False, 'check':False},
-                'IPython' : {'website': 'http://ipython.scipy.org/', 'is_present': False, 'check': False},
+dependencies = {'pylab': {'website': 'http://matplotlib.sourceforge.net/',
+                           'is_present': False, 'check': False},
+                'matplotlib': {'website': 'http://matplotlib.sourceforge.net/',
+                               'is_present': False, 'check': False},
+                'tables': {'website': 'http://www.pytables.org/moin',
+                           'is_present': False, 'check': False},
+                'PIL': {'website': 'http://www.pythonware.com/products/pil/',
+                        'is_present': False, 'check': False},
+                'scipy': {'website': 'http://numpy.scipy.org/',
+                          'is_present': False, 'check': False},
+                'rpy': {'website': 'http://rpy.sourceforge.net/',
+                        'is_present': False, 'check': False},
+                'rpy2': {'website': 'http://rpy.sourceforge.net/rpy2.html',
+                         'is_present': False, 'check': False},
+                'IPython': {'website': 'http://ipython.scipy.org/',
+                            'is_present': False, 'check': False},
                 ## Add here your extensions ###
                }
 
@@ -67,14 +88,18 @@ dependencies = {'pylab' : {'website' : 'http://matplotlib.sourceforge.net/', 'is
 class DependencyWarning(UserWarning):
     pass
 
+
 def get_import_warning(name):
-    return '''** %s ** package is not installed. 
+    return '''** %s ** package is not installed.
 To have functions using %s please install the package.
 website : %s
-''' %(name, name, dependencies[name]['website'])
+''' % (name, name, dependencies[name]['website'])
+
 
 def get_runtime_warning(name, errmsg):
-    return '** %s ** package is installed but cannot be imported. The error message is: %s' %(name, errmsg)
+    return '** %s ** package is installed but cannot be imported.' + \
+           'The error message is: %s' % (name, errmsg)
+
 
 def check_numpy_version():
     import numpy
@@ -85,17 +110,20 @@ def check_numpy_version():
     else:
         return False
 
+
 def check_pytables_version():
-   #v = [int(s) for s in __version__.split('.')]
-   if tables.__version__<= 2: #1.4: #v[0] < 1 or (v[0] == 1 and v[1] < 4):
-       raise Exception('PyTables version must be >= 1.4, installed version is %s' % __version__)
+    import tables
+    if tables.__version__ <= 2:
+        raise Exception('PyTables version must be >= 1.4,' +
+                        'installed version is %s' % __version__)
+
 
 def check_dependency(name):
     if dependencies[name]['check']:
         return dependencies[name]['is_present']
     else:
         try:
-            exec("import %s" %name)
+            exec("import %s" % name)
             dependencies[name]['is_present'] = True
         except ImportError:
             warnings.warn(get_import_warning(name), DependencyWarning)
@@ -105,34 +133,42 @@ def check_dependency(name):
         return dependencies[name]['is_present']
 
 
-
 # Setup fancy logging
+red = 0010
+green = 0020
+yellow = 0030
+blue = 0040
+magenta = 0050
+cyan = 0060
+bright = 0100
 
-red     = 0010; green  = 0020; yellow = 0030; blue = 0040;
-magenta = 0050; cyan   = 0060; bright = 0100
 try:
     import ll.ansistyle
+
     def colour(col, text):
         try:
             return unicode(ll.ansistyle.Text(col, unicode(text)))
         except UnicodeDecodeError, e:
             raise UnicodeDecodeError("%s. text was %s" % (e, text))
 except ImportError:
+
     def colour(col, text):
-            return text
-        
+        return text
+
 import logging
 
-# Add a header() level to logging
-logging.HEADER = (logging.WARNING + logging.ERROR)/2 # higher than warning, lower than error
+# Add a header() level to logging (higher than warning, lower than error)
+logging.HEADER = (logging.WARNING + logging.ERROR) / 2
 logging.addLevelName(logging.HEADER, 'HEADER')
 
 root = logging.getLogger()
 
+
 def root_header(msg, *args, **kwargs):
     if len(root.handlers) == 0:
-        basicConfig()
-    apply(root.header, (msg,)+args, kwargs)
+        logging.basicConfig()
+    apply(root.header, (msg,) + args, kwargs)
+
 
 def logger_header(self, msg, *args, **kwargs):
     if self.manager.disable >= logging.HEADER:
@@ -143,20 +179,22 @@ def logger_header(self, msg, *args, **kwargs):
 logging.Logger.header = logger_header
 logging.header = root_header
 
+
 class FancyFormatter(logging.Formatter):
+    """A log formatter that colours and indents
+    the log message depending on the level.
+
     """
-    A log formatter that colours and indents the log message depending on the level.
-    """
-    
+
     DEFAULT_COLOURS = {
-        'CRITICAL': bright+red,
+        'CRITICAL': bright + red,
         'ERROR': red,
         'WARNING': magenta,
-        'HEADER': bright+yellow,
+        'HEADER': bright + yellow,
         'INFO': cyan,
         'DEBUG': green
     }
-    
+
     DEFAULT_INDENTS = {
         'CRITICAL': "",
         'ERROR': "",
@@ -165,8 +203,9 @@ class FancyFormatter(logging.Formatter):
         'INFO': "  ",
         'DEBUG': "    ",
     }
-    
-    def __init__(self, fmt=None, datefmt=None, colours=DEFAULT_COLOURS, mpi_rank=None):
+
+    def __init__(self, fmt=None, datefmt=None,
+                 colours=DEFAULT_COLOURS, mpi_rank=None):
         logging.Formatter.__init__(self, fmt, datefmt)
         self._colours = colours
         self._indents = FancyFormatter.DEFAULT_INDENTS
@@ -174,7 +213,7 @@ class FancyFormatter(logging.Formatter):
             self.prefix = ""
         else:
             self.prefix = "%-3d" % mpi_rank
-    
+
     def format(self, record):
         s = logging.Formatter.format(self, record)
         if record.levelname == "HEADER":
@@ -185,18 +224,18 @@ class FancyFormatter(logging.Formatter):
 
 
 class NameOrLevelFilter(logging.Filter):
-    """
-    Logging filter which allows messages that either have an approved name, or
-    have a level >= the level specified.
-    
+    """Logging filter which allows messages that either have an approved name,
+    or have a level >= the level specified.
+
     The intended use is when you want to receive most messages at a high level,
     but receive certain named messages at a lower level, e.g. for debugging a
     particular component.
+
     """
     def __init__(self, names=[], level=logging.INFO):
         self.names = names
         self.level = level
-        
+
     def filter(self, record):
         if len(self.names) == 0:
             allow_by_name = True
@@ -206,13 +245,15 @@ class NameOrLevelFilter(logging.Filter):
         return (allow_by_name or allow_by_level)
 
 
-def init_logging(filename, file_level=logging.INFO, console_level=logging.WARNING, mpi_rank=None):
+def init_logging(filename, file_level=logging.INFO,
+                 console_level=logging.WARNING, mpi_rank=None):
     if mpi_rank is None:
         mpi_fmt = ""
     else:
         mpi_fmt = "%3d " % mpi_rank
     logging.basicConfig(level=file_level,
-                        format='%%(asctime)s %s%%(name)-10s %%(levelname)-6s %%(message)s [%%(pathname)s:%%(lineno)d]' % mpi_fmt,
+                        format='%%(asctime)s %s%%(name)-10s %%(levelname)-6s' +
+                          '%%(message)s [%%(pathname)s:%%(lineno)d]' % mpi_fmt,
                         filename=filename,
                         filemode='w')
     console = logging.StreamHandler()

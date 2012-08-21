@@ -2,7 +2,7 @@
 neurotools.signals
 ==================
 
-A collection of functions to create, manipulate and play with analog signals. 
+
 
 Classes
 -------
